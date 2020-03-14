@@ -4,6 +4,7 @@ import (
 	"log"
 	"math"
 	"os"
+	usercontrollers "snappy-api/controllers/user"
 
 	"github.com/AdhityaRamadhanus/fasthttpcors"
 	routing "github.com/qiangxue/fasthttp-routing"
@@ -27,10 +28,10 @@ func main() {
 		port = "8000"
 	}
 
-	// api := router.Group("/api")
+	api := router.Group("/api")
 
-	// api.Post("/user", controller.Create)
-	// api.Put("/user", controller.Update)
+	api.Post("/user", usercontrollers.Create)
+	api.Put("/user", usercontrollers.Update)
 	// api.Delete("/user/<id>", controller.Delete)
 	// api.Get("/user/<id>", controller.GetById)
 	// api.Get("/user", controller.GetAll)

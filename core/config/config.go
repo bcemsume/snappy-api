@@ -7,17 +7,18 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// DBHOST s
 const (
-	DBHOST         = "DBHOST"
-	DBPORT         = "DBPORT"
-	DBUSER         = "DBUSER"
-	DBPASS         = "DBPASS"
-	DBNAME         = "DBNAME"
-	SSLMODE        = "SSLMODE"
-	LOG_FILE_PATH  = "LOG_FILE_PATH"
-	LOG_FILE_NAME  = "LOG_FILE_NAME"
-	TOKEN_PASSWORD = "TOKEN_PASSWORD"
-	LOG_FILE_SIZE  = "LOG_FILE_SIZE"
+	DBHOST        = "DBHOST"
+	DBPORT        = "DBPORT"
+	DBUSER        = "DBUSER"
+	DBPASS        = "DBPASS"
+	DBNAME        = "DBNAME"
+	SSLMODE       = "SSLMODE"
+	LOGFILEPATH   = "LOG_FILE_PATH"
+	LOGFILENAME   = "LOG_FILE_NAME"
+	TOKENPASSWORD = "TOKEN_PASSWORD"
+	LOGFILESIZE   = "LOG_FILE_SIZE"
 )
 
 func DBConfigs() map[string]string {
@@ -51,9 +52,9 @@ func LogConfigs() map[string]string {
 		fmt.Print(e)
 		return conf
 	}
-	conf[LOG_FILE_PATH] = os.Getenv(LOG_FILE_PATH)
-	conf[LOG_FILE_NAME] = os.Getenv(LOG_FILE_NAME)
-	conf[LOG_FILE_SIZE] = os.Getenv(LOG_FILE_SIZE)
+	conf[LOGFILEPATH] = os.Getenv(LOGFILEPATH)
+	conf[LOGFILENAME] = os.Getenv(LOGFILENAME)
+	conf[LOGFILESIZE] = os.Getenv(LOGFILESIZE)
 	return conf
 }
 
@@ -67,7 +68,7 @@ func GetTokenConfig() map[string]string {
 		return conf
 	}
 
-	conf[TOKEN_PASSWORD] = os.Getenv(TOKEN_PASSWORD)
+	conf[TOKENPASSWORD] = os.Getenv(TOKENPASSWORD)
 
 	return conf
 }

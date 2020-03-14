@@ -2,9 +2,10 @@ package dbmodels
 
 import "github.com/jinzhu/gorm"
 
+// User s
 type User struct {
-	UserName, LastName, Name, SocialToken, Password string
-	CreatedBy, UpdatedBy, TitleID, TokenType        int16
-	IsActive, IsDeleted                             bool
 	*gorm.Model
+	UserName, LastName, Name, SocialToken, Password string
+	SocialTokenType                                 int16
+	IsActive, IsDeleted                             bool
 }

@@ -1,0 +1,17 @@
+INFO : 2020.03.14 23:18:36 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=enable password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+FATAL : 2020.03.14 23:18:36 -- sql: unknown driver "postgres" (forgotten import?)
+INFO : 2020.03.14 23:18:36 -- db connected.
+INFO : 2020.03.14 23:20:24 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=enable password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+FATAL : 2020.03.14 23:20:49 -- sql: unknown driver "postgres" (forgotten import?)
+INFO : 2020.03.14 23:20:49 -- db connected.
+INFO : 2020.03.14 23:22:46 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=enable password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+FATAL : 2020.03.14 23:22:46 -- pq: unsupported sslmode "enable"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
+INFO : 2020.03.14 23:22:46 -- db connected.
+INFO : 2020.03.14 23:25:36 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=enable password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+FATAL : 2020.03.14 23:25:37 -- pq: unsupported sslmode "enable"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
+INFO : 2020.03.14 23:25:37 -- db connected.
+INFO : 2020.03.14 23:26:06 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=enable password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+FATAL : 2020.03.14 23:26:15 -- pq: unsupported sslmode "enable"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
+INFO : 2020.03.14 23:26:15 -- db connected.
+INFO : 2020.03.14 23:26:41 -- host=ec2-46-137-113-157.eu-west-1.compute.amazonaws.com user=dvgmkyfavgartk dbname=dcruh1nguin2jd sslmode=require password=27caa49005f86f4152c3b61a14a29e9d98f2ac7d567e900369181713d7cd44f8
+INFO : 2020.03.14 23:26:42 -- db connected.

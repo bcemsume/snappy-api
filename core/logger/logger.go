@@ -45,13 +45,13 @@ func GetLogInstance(filePath string, fileName string) *handleError {
 	cfg := config.LogConfigs()
 
 	if fileName == "" {
-		fileName = cfg[config.LOG_FILE_NAME]
+		fileName = cfg[config.LOGFILENAME]
 	}
 	if filePath == "" {
-		filePath = cfg[config.LOG_FILE_PATH]
+		filePath = cfg[config.LOGFILEPATH]
 	}
 	if instance == nil {
-		fileSize, _ := strconv.ParseInt(cfg[config.LOG_FILE_SIZE], 10, 32)
+		fileSize, _ := strconv.ParseInt(cfg[config.LOGFILESIZE], 10, 32)
 		instance = initLogger(filePath, fileName, fileSize)
 	}
 	padLock.Unlock()
@@ -73,7 +73,7 @@ func (h *handleError) writeTextLog(text string, errorType errorType) {
 
 func writeLog(h *handleError, str []byte) {
 
-	if er := os.MkdirAll(h.LogFilePath, 0777); er != nil {
+	if er := os.MkdirAll(h.LogFilePath, 0750); er != nil {
 		fmt.Println(er)
 	}
 	logPath := h.LogFilePath + h.createLogFile() + ".txt"
@@ -149,7 +149,7 @@ func (h *handleError) createLogFile() string {
 	if tmpLogFile == "" {
 		tmpLogFile = h.LogFileName
 		if len(files) != 0 {
-			tmpLogFile = tmpLogFile + strconv.Itoa(len(files))
+			tmpLogFile += strconv.Itoa(len(files))
 		}
 	}
 	return tmpLogFile
