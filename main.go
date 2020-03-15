@@ -27,6 +27,10 @@ func main() {
 	if port == "" {
 		port = "8000"
 	}
+	// router.Get("/swagger/*", func(c *routing.Context) error {
+	// 	c.URL("http://localhost:1323/swagger/doc.json")
+	// 	return nil
+	// })
 
 	api := router.Group("/api")
 
