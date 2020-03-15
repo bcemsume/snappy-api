@@ -32,16 +32,15 @@ func Create(ctx *routing.Context) error {
 		r.Message = "this user name already exist."
 		ctx.Response.SetStatusCode(400)
 		res, _ := jsoniter.Marshal(r)
-		ctx.WriteData(res)
-		return nil
+		return ctx.WriteData(res)
 	}
 	db.Create(&item)
 	res, _ := jsoniter.Marshal(r)
-	ctx.WriteData(res)
 
-	return nil
+	return ctx.WriteData(res)
 }
 
+// Update update user with id
 func Update(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := database.InitDB()
@@ -60,8 +59,8 @@ func Update(ctx *routing.Context) error {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res, _ := jsoniter.Marshal(r)
-		ctx.WriteData(res)
-		return nil
+
+		return ctx.WriteData(res)
 	}
 
 	if err := jsoniter.Unmarshal(ctx.Request.Body(), &user); err != nil {
@@ -69,13 +68,43 @@ func Update(ctx *routing.Context) error {
 		logger.Error(err)
 		r.IsSucceeded = false
 		r.Message = err.Error()
-		ctx.WriteData(r)
+		res, _ := jsoniter.Marshal(r)
+
+		return ctx.WriteData(res)
 
 	}
 
 	db.Save(&user)
-	// res, _ := jsoniter.Marshal(r)
-	ctx.WriteData(r)
+	res, _ := jsoniter.Marshal(r)
+	return ctx.WriteData(res)
+}
+
+// GetByID get user by id
+func GetByID(ctx *routing.Context) error {
+	logger := logger.GetLogInstance("", "")
+	db := database.InitDB()
+
+	defer db.Close()
+	user := dbmodels.User{}
+	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
+
+	if err := db.Where("id = ?", ctx.Param("id")).First(&user).Error; err != nil {
+		logger.Error(err)
+		ctx.Response.SetStatusCode(404)
+		r.IsSucceeded = false
+		r.Message = "user not found."
+		return ctx.WriteData(r)
+	}
+	res, err := jsoniter.Marshal(user)
+	if err != nil {
+		return err
+	}
+
+	return ctx.WriteData(res)
+}
+
+// GetAll get all user
+func GetAll(ctx *routing.Context) error {
 
 	return nil
 }

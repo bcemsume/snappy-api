@@ -36,6 +36,8 @@ func main() {
 
 	api.Post("/user", usercontrollers.Create)
 	api.Put("/user", usercontrollers.Update)
+	api.Get("/user/<id>", usercontrollers.GetByID)
+
 	// api.Delete("/user/<id>", controller.Delete)
 	// api.Get("/user/<id>", controller.GetById)
 	// api.Get("/user", controller.GetAll)
