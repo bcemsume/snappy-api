@@ -5,6 +5,7 @@ import (
 	"math"
 	"os"
 	usercontrollers "snappy-api/controllers/user"
+	"snappy-api/core/database"
 
 	"github.com/AdhityaRamadhanus/fasthttpcors"
 	routing "github.com/qiangxue/fasthttp-routing"
@@ -17,10 +18,12 @@ func main() {
 	})
 
 	router := routing.New()
-
+	db := database.InitDB()
 	router.Use(func(c *routing.Context) error {
+		c.Set("db", db)
 		c.Response.Header.Set("Content-Type", "application/json")
-		return nil
+
+		return c.Next()
 	})
 
 	port := os.Getenv("PORT")

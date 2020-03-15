@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"snappy-api/core/database"
 	"snappy-api/core/logger"
 	"snappy-api/models"
 	dbmodels "snappy-api/models/db-models"
@@ -16,7 +15,7 @@ import (
 func Create(ctx *routing.Context) error {
 	item := &dbmodels.User{}
 
-	var db = database.InitDB()
+	db := ctx.Get("db").(*gorm.DB)
 
 	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
 
@@ -34,6 +33,7 @@ func Create(ctx *routing.Context) error {
 		res, _ := jsoniter.Marshal(r)
 		return ctx.WriteData(res)
 	}
+	item.IsActive = true
 	db.Create(&item)
 	res, _ := jsoniter.Marshal(r)
 
@@ -43,9 +43,7 @@ func Create(ctx *routing.Context) error {
 // Update update user with id
 func Update(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
-	db := database.InitDB()
-
-	defer db.Close()
+	db := ctx.Get("db").(*gorm.DB)
 
 	user := &dbmodels.User{}
 	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
@@ -82,9 +80,8 @@ func Update(ctx *routing.Context) error {
 // GetByID get user by id
 func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
-	db := database.InitDB()
+	db := ctx.Get("db").(*gorm.DB)
 
-	defer db.Close()
 	user := dbmodels.User{}
 	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
 
@@ -93,13 +90,16 @@ func GetByID(ctx *routing.Context) error {
 		ctx.Response.SetStatusCode(404)
 		r.IsSucceeded = false
 		r.Message = "user not found."
-		return ctx.WriteData(r)
+		res, err := jsoniter.Marshal(r)
+		if err != nil {
+			return err
+		}
+		return ctx.WriteData(res)
 	}
 	res, err := jsoniter.Marshal(user)
 	if err != nil {
 		return err
 	}
-
 	return ctx.WriteData(res)
 }
 
