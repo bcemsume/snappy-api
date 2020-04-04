@@ -17,8 +17,6 @@ func Create(ctx *routing.Context) error {
 
 	db := ctx.Get("db").(*gorm.DB)
 
-	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
-
 	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
 		return jerr
 	}
@@ -27,54 +25,49 @@ func Create(ctx *routing.Context) error {
 	dbErr := db.Where(&dbmodels.User{UserName: item.UserName}).First(&findItem).Error
 
 	if dbErr != gorm.ErrRecordNotFound {
-		r.IsSucceeded = false
-		r.Message = "this user name already exist."
 		ctx.Response.SetStatusCode(400)
-		res, _ := jsoniter.Marshal(r)
-		return ctx.WriteData(res)
+		r := models.NewResponse(false, nil, "this user name already exist.")
+
+		return ctx.WriteData(r.MustMarshal())
 	}
 	item.IsActive = true
 	db.Create(&item)
-	res, _ := jsoniter.Marshal(r)
-
-	return ctx.WriteData(res)
+	r := models.NewResponse(true, nil, "OK")
+	return ctx.WriteData(r.MustMarshal())
 }
 
 // Update update user with id
 func Update(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
+	userID := ctx.Param("id")
 
 	user := &dbmodels.User{}
-	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
 
 	if r := jsoniter.Unmarshal(ctx.Request.Body(), &user); r != nil {
 		logger.Error(r)
 		return r
 	}
 
-	if err := db.Where("id = ?", user.ID).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", userID).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
-		res, _ := jsoniter.Marshal(r)
-
-		return ctx.WriteData(res)
+		r := models.NewResponse(false, nil, "user not found")
+		return ctx.WriteData(r.MustMarshal())
 	}
 
 	if err := jsoniter.Unmarshal(ctx.Request.Body(), &user); err != nil {
 		ctx.Response.SetStatusCode(400)
 		logger.Error(err)
-		r.IsSucceeded = false
-		r.Message = err.Error()
-		res, _ := jsoniter.Marshal(r)
+		r := models.NewResponse(false, nil, "unexpected error")
 
-		return ctx.WriteData(res)
+		return ctx.WriteData(r.MustMarshal())
 
 	}
 
 	db.Save(&user)
-	res, _ := jsoniter.Marshal(r)
-	return ctx.WriteData(res)
+	r := models.NewResponse(true, user, "OK")
+	return ctx.WriteData(r.MustMarshal())
 }
 
 // GetByID get user by id
@@ -83,28 +76,24 @@ func GetByID(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 
 	user := dbmodels.User{}
-	r := models.ResponseMessage{Message: "OK", IsSucceeded: true}
 
 	if err := db.Where("id = ?", ctx.Param("id")).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
-		r.IsSucceeded = false
-		r.Message = "user not found."
-		res, err := jsoniter.Marshal(r)
-		if err != nil {
-			return err
-		}
-		return ctx.WriteData(res)
+		res := models.NewResponse(false, nil, "not found")
+		return ctx.WriteData(res.MustMarshal())
 	}
-	res, err := jsoniter.Marshal(user)
-	if err != nil {
-		return err
-	}
-	return ctx.WriteData(res)
+	res := models.NewResponse(true, user, "OK")
+	return ctx.WriteData(res.MustMarshal())
 }
 
 // GetAll get all user
 func GetAll(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+	users := []dbmodels.User{}
+	db.Find(&users)
 
-	return nil
+	res := models.NewResponse(true, users, "OK")
+
+	return ctx.WriteData(res.MustMarshal())
 }

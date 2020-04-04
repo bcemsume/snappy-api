@@ -1,11 +1,17 @@
 package dbmodels
 
-import "github.com/jinzhu/gorm"
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
 
 // User s
 type User struct {
 	*gorm.Model
 	UserName, LastName, Name, SocialToken, Password string
-	SocialTokenType                                 int16
+	BirthDay                                        time.Time
+	Gender                                          byte
+	SocialTokenType, UserType                       int16
 	IsActive, IsDeleted                             bool
 }

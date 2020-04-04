@@ -1,51 +1,19 @@
 package main
 
 import (
-	"log"
-	"math"
 	"os"
-	usercontrollers "snappy-api/controllers/user"
-	"snappy-api/core/database"
+	"snappy-api/router"
 
-	"github.com/AdhityaRamadhanus/fasthttpcors"
-	routing "github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
 )
 
 func main() {
-	withCors := fasthttpcors.NewCorsHandler(fasthttpcors.Options{
-		AllowMaxAge: math.MaxInt32,
-	})
-
-	router := routing.New()
-	db := database.InitDB()
-	router.Use(func(c *routing.Context) error {
-		c.Set("db", db)
-		c.Response.Header.Set("Content-Type", "application/json")
-
-		return c.Next()
-	})
 
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000"
 	}
-	// router.Get("/swagger/*", func(c *routing.Context) error {
-	// 	c.URL("http://localhost:1323/swagger/doc.json")
-	// 	return nil
-	// })
 
-	api := router.Group("/api")
-
-	api.Post("/user", usercontrollers.Create)
-	api.Put("/user", usercontrollers.Update)
-	api.Get("/user/<id>", usercontrollers.GetByID)
-
-	// api.Delete("/user/<id>", controller.Delete)
-	// api.Get("/user/<id>", controller.GetById)
-	// api.Get("/user", controller.GetAll)
-
-	log.Println("server listen " + port)
-	panic(fasthttp.ListenAndServe(":"+port, withCors.CorsMiddleware(router.HandleRequest)))
+	panic(fasthttp.ListenAndServe(":"+port, router.Route()))
 
 }

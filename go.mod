@@ -18,7 +18,8 @@ require (
 	github.com/swaggo/swag v1.6.5
 	github.com/urfave/cli v1.22.3 // indirect
 	github.com/valyala/fasthttp v1.9.0
-	golang.org/x/net v0.0.0-20200301022130-244492dfa37a // indirect
+	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e // indirect
+	golang.org/x/text v0.3.2
 	golang.org/x/tools v0.0.0-20200313205530-4303120df7d8 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

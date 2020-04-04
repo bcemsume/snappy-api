@@ -21,6 +21,6 @@ func InitDB() *gorm.DB {
 		log.Fatal(err)
 	}
 	log.TextInfo("db connected.")
-	db.AutoMigrate(&dbmodels.User{})
+	db.AutoMigrate(&dbmodels.User{}, &dbmodels.Campaign{}, &dbmodels.ClaimEvent{}, &dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{})
 	return db
 }
