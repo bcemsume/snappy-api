@@ -7,6 +7,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// TODO config reading change to configor package
 // DBHOST s
 const (
 	DBHOST        = "DBHOST"

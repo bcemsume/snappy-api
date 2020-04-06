@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"snappy-api/router"
 
@@ -13,7 +14,7 @@ func main() {
 	if port == "" {
 		port = "8000"
 	}
-
+	fmt.Printf("server listen on :" + port)
 	panic(fasthttp.ListenAndServe(":"+port, router.Route()))
 
 }

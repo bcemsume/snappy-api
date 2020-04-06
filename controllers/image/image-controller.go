@@ -3,7 +3,7 @@ package controllers
 import (
 	"snappy-api/core/logger"
 	"snappy-api/models"
-	"snappy-api/models/dbmodels"
+	dbmodels "snappy-api/models/dbmodels"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -13,50 +13,41 @@ import (
 
 // Create s
 func Create(ctx *routing.Context) error {
-	item := &dbmodels.User{}
-
+	logger := logger.GetLogInstance("", "")
+	item := &dbmodels.Image{}
 	db := ctx.Get("db").(*gorm.DB)
 
 	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
+		logger.Error(jerr)
 		return jerr
 	}
 
-	findItem := &dbmodels.User{}
-	dbErr := db.Where(dbmodels.User{UserName: item.UserName}).Or(dbmodels.User{Email: item.Email}).First(&findItem).Error
-
-	if dbErr != gorm.ErrRecordNotFound {
-		ctx.Response.SetStatusCode(400)
-		r := models.NewResponse(false, nil, "this user name or email already exist.")
-
-		return ctx.WriteData(r.MustMarshal())
-	}
-	item.IsActive = true
 	db.Create(&item)
 	r := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
 
-// Update update user with id
+// Update update image with id
 func Update(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
-	userID := ctx.Param("id")
+	imageID := ctx.Param("id")
 
-	user := &dbmodels.User{}
+	img := &dbmodels.Image{}
 
-	if r := jsoniter.Unmarshal(ctx.Request.Body(), &user); r != nil {
+	if r := jsoniter.Unmarshal(ctx.Request.Body(), &img); r != nil {
 		logger.Error(r)
 		return r
 	}
 
-	if err := db.Where("id = ?", userID).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", imageID).First(&img).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
-		r := models.NewResponse(false, nil, "user not found")
+		r := models.NewResponse(false, nil, "image not found")
 		return ctx.WriteData(r.MustMarshal())
 	}
 
-	if err := jsoniter.Unmarshal(ctx.Request.Body(), &user); err != nil {
+	if err := jsoniter.Unmarshal(ctx.Request.Body(), &img); err != nil {
 		ctx.Response.SetStatusCode(400)
 		logger.Error(err)
 		r := models.NewResponse(false, nil, "unexpected error")
@@ -65,35 +56,35 @@ func Update(ctx *routing.Context) error {
 
 	}
 
-	db.Save(&user)
-	r := models.NewResponse(true, user, "OK")
+	db.Save(&img)
+	r := models.NewResponse(true, img, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
 
-// GetByID get user by id
+// GetByID get image by id
 func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	user := dbmodels.User{}
+	img := dbmodels.Image{}
 
-	if err := db.Where("id = ?", ctx.Param("id")).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", ctx.Param("id")).First(&img).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
 		return ctx.WriteData(res.MustMarshal())
 	}
-	res := models.NewResponse(true, user, "OK")
+	res := models.NewResponse(true, img, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
 
-// GetAll get all user
+// GetAll get all image
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	users := []dbmodels.User{}
-	db.Find(&users)
+	data := []dbmodels.Image{}
+	db.Find(&data)
 
-	res := models.NewResponse(true, users, "OK")
+	res := models.NewResponse(true, data, "OK")
 
 	return ctx.WriteData(res.MustMarshal())
 }

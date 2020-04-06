@@ -9,8 +9,8 @@ import (
 // Campaign s
 type Campaign struct {
 	*gorm.Model
-	Restaurant Restaurant `gorm:"association_autoupdate:false"`
-	Product    Product    `gorm:"association_autoupdate:false"`
+	ProductID  uint
+	Product    Product
 	Claim      int
 	FinishDate time.Time
 }

@@ -9,8 +9,8 @@ import (
 // ClaimEvent s
 type ClaimEvent struct {
 	*gorm.Model
-	User     User     `gorm:"association_autoupdate:false"`
-	Campaign Campaign `gorm:"association_autoupdate:false"`
-	isUsed   bool
+	UserID   uint
+	User     User
+	IsUsed   bool
 	UsedTime time.Time
 }

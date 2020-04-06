@@ -3,7 +3,7 @@ package controllers
 import (
 	"snappy-api/core/logger"
 	"snappy-api/models"
-	"snappy-api/models/dbmodels"
+	dbmodels "snappy-api/models/dbmodels"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -13,7 +13,7 @@ import (
 
 // Create s
 func Create(ctx *routing.Context) error {
-	item := &dbmodels.User{}
+	item := &dbmodels.Campaign{}
 
 	db := ctx.Get("db").(*gorm.DB)
 
@@ -21,42 +21,41 @@ func Create(ctx *routing.Context) error {
 		return jerr
 	}
 
-	findItem := &dbmodels.User{}
-	dbErr := db.Where(dbmodels.User{UserName: item.UserName}).Or(dbmodels.User{Email: item.Email}).First(&findItem).Error
+	findItem := &dbmodels.Campaign{}
+	dbErr := db.Where(dbmodels.Campaign{}).First(&findItem).Error
 
 	if dbErr != gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
-		r := models.NewResponse(false, nil, "this user name or email already exist.")
+		r := models.NewResponse(false, nil, "this cmp already exist.")
 
 		return ctx.WriteData(r.MustMarshal())
 	}
-	item.IsActive = true
 	db.Create(&item)
 	r := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
 
-// Update update user with id
+// Update update campaign with id
 func Update(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
-	userID := ctx.Param("id")
+	id := ctx.Param("id")
 
-	user := &dbmodels.User{}
+	cmp := &dbmodels.Campaign{}
 
-	if r := jsoniter.Unmarshal(ctx.Request.Body(), &user); r != nil {
+	if r := jsoniter.Unmarshal(ctx.Request.Body(), &cmp); r != nil {
 		logger.Error(r)
 		return r
 	}
 
-	if err := db.Where("id = ?", userID).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", id).First(&cmp).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
-		r := models.NewResponse(false, nil, "user not found")
+		r := models.NewResponse(false, nil, "cmp not found")
 		return ctx.WriteData(r.MustMarshal())
 	}
 
-	if err := jsoniter.Unmarshal(ctx.Request.Body(), &user); err != nil {
+	if err := jsoniter.Unmarshal(ctx.Request.Body(), &cmp); err != nil {
 		ctx.Response.SetStatusCode(400)
 		logger.Error(err)
 		r := models.NewResponse(false, nil, "unexpected error")
@@ -65,35 +64,43 @@ func Update(ctx *routing.Context) error {
 
 	}
 
-	db.Save(&user)
-	r := models.NewResponse(true, user, "OK")
+	db.Save(&cmp)
+	r := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
 
-// GetByID get user by id
+// GetByID get campaign by id
 func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	user := dbmodels.User{}
+	cmp := dbmodels.Campaign{}
 
-	if err := db.Where("id = ?", ctx.Param("id")).First(&user).Error; err != nil {
+	if err := db.Where("id = ?", ctx.Param("id")).First(&cmp).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
 		return ctx.WriteData(res.MustMarshal())
 	}
-	res := models.NewResponse(true, user, "OK")
+	res := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
 
-// GetAll get all user
+// GetAll get all campaign
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	users := []dbmodels.User{}
-	db.Find(&users)
+	data := []dbmodels.Campaign{}
+	db.Find(&data)
 
-	res := models.NewResponse(true, users, "OK")
+	res := models.NewResponse(true, data, "OK")
 
+	return ctx.WriteData(res.MustMarshal())
+}
+
+func GetProducts(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+	cmp := []dbmodels.Campaign{}
+	db.Model(dbmodels.Product{}).Where("product_id = ?", ctx.Param("id")).Related(&cmp)
+	res := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }

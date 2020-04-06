@@ -8,4 +8,6 @@ type Restaurant struct {
 	Title, WorkingHours, Address, Email, Phone, PaymentMethods, WorkingDays string
 	Lang, Long                                                              uint32
 	IsActive, IsDeleted, IsPromo                                            bool
+	Products                                                                []Product
+	Images                                                                  []Image `gorm:"auto_preload"`
 }
