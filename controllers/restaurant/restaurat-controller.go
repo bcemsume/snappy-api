@@ -100,7 +100,7 @@ func GetAll(ctx *routing.Context) error {
 func GetProducts(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	prd := []models.ProductWithClaimModel{}
-	db.Table("products").Where("restaurant_id = ?", ctx.Param("id")).Select("products.description, products.price products.id, campaigns.claim, campaigns.finish_date").Joins("join campaigns on products.id = campaigns.product_id").Scan(&prd)
+	db.Table("products").Where("restaurant_id = ?", ctx.Param("id")).Select("products.description, products.price, products.id, campaigns.claim, campaigns.finish_date").Joins("join campaigns on products.id = campaigns.product_id").Scan(&prd)
 
 	// db.Model(&dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Preload("Campaigns").Related(&prd).Find(&prd)
 	res := models.NewResponse(true, prd, "OK")

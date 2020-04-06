@@ -102,7 +102,7 @@ func GetAll(ctx *routing.Context) error {
 func GetCampaigns(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	cmp := []models.CampaingModel{}
-	db.Model(&dbmodels.Product{}).Where("product_id = ?", ctx.Param("id")).Related(&dbmodels.Campaign{}).Scan(&cmp)
+	db.Model(&dbmodels.Campaign{}).Where("product_id = ?", ctx.Param("id")).Scan(&cmp)
 	res := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
