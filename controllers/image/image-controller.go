@@ -66,9 +66,9 @@ func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	img := dbmodels.Image{}
+	img := []models.ImageModel{}
 
-	if err := db.Where("id = ?", ctx.Param("id")).First(&img).Error; err != nil {
+	if err := db.Model(&dbmodels.Image{}).Where("id = ?", ctx.Param("id")).Scan(&img).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
@@ -81,8 +81,8 @@ func GetByID(ctx *routing.Context) error {
 // GetAll get all image
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	data := []dbmodels.Image{}
-	db.Find(&data)
+	data := []models.ImageModel{}
+	db.Model(&dbmodels.Image{}).Scan(&data)
 
 	res := models.NewResponse(true, data, "OK")
 

@@ -1,12 +1,11 @@
 package models
 
-import (
-	"time"
-)
+import "time"
 
+// RestaurantModel s
 type ProductModel struct {
-	ID          uint
-	Claim       int
-	Description string
-	FinishDate  time.Time
+	RestaurantID, ID uint
+	Description      string
+	Price            float64
+	FinishDate       time.Time
 }

@@ -74,9 +74,9 @@ func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	cmp := dbmodels.Campaign{}
+	cmp := []models.CampaingModel{}
 
-	if err := db.Where("id = ?", ctx.Param("id")).First(&cmp).Error; err != nil {
+	if err := db.Model(&[]dbmodels.Campaign{}).Where("id = ?", ctx.Param("id")).Scan(&cmp).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
@@ -89,18 +89,19 @@ func GetByID(ctx *routing.Context) error {
 // GetAll get all campaign
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	data := []dbmodels.Campaign{}
-	db.Find(&data)
+	data := []models.CampaingModel{}
+	db.Model(&dbmodels.Campaign{}).Scan(&data)
 
 	res := models.NewResponse(true, data, "OK")
 
 	return ctx.WriteData(res.MustMarshal())
 }
 
+//GetProducts s
 func GetProducts(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	cmp := []dbmodels.Campaign{}
-	db.Model(dbmodels.Product{}).Where("product_id = ?", ctx.Param("id")).Related(&cmp)
+	cmp := []models.CampaingModel{}
+	db.Model(dbmodels.Product{}).Where("product_id = ?", ctx.Param("id")).Related(&dbmodels.Campaign{}).Scan(&cmp)
 	res := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
