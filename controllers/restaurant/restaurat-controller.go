@@ -99,27 +99,20 @@ func GetAll(ctx *routing.Context) error {
 // GetProducts s
 func GetProducts(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	prd := []dbmodels.Product{}
-	db.Model(dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Related(&prd).Find(&prd)
+	prd := []models.ProductModel{}
+	db.Table("products").Where("restaurant_id = ?", ctx.Param("id")).Select("products.description, products.id, campaigns.claim, campaigns.finish_date").Joins("join campaigns on products.id = campaigns.product_id").Scan(&prd)
+
+	// db.Model(&dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Preload("Campaigns").Related(&prd).Find(&prd)
 	res := models.NewResponse(true, prd, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
 
 // GetImages s
 func GetImages(ctx *routing.Context) error {
-	db := ctx.Get("db").(*gorm.DB)
-	img := []dbmodels.Image{}
-	db.Model(&dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Related(&img).Find(&img)
-	res := models.NewResponse(true, img, "OK")
-	return ctx.WriteData(res.MustMarshal())
-}
 
-func GetCampaigns(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	cmp := []dbmodels.Campaign{}
-	db.Debug().Joins("JOIN products ON products.id = campaigns.product_id").Joins("JOIN restaurants ON restaurants.id = products.restaurant_id").Where("restaurants.id = ?", ctx.Param("id")).Find(&cmp)
-
-	// db.Debug().Model(&dbmodels.Restaurant{}).Model(&dbmodels.Product{}).Where("product_id = ?", ctx.Param("id")).Related(&cmp).Find(&cmp)
-	res := models.NewResponse(true, cmp, "OK")
+	data := []models.ImageModel{}
+	db.Model(&dbmodels.Image{}).Where("restaurant_id = ?", ctx.Param("id")).Scan(&data)
+	res := models.NewResponse(true, data, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }

@@ -44,7 +44,7 @@ func Route() fasthttp.RequestHandler {
 	api.Get("restaurant", restaurant.GetAll)
 	api.Get("restaurant/<id>/products", restaurant.GetProducts)
 	api.Get("restaurant/<id>/images", restaurant.GetImages)
-	api.Get("restaurant/<id>/campaigns", restaurant.GetCampaigns)
+	// api.Get("restaurant/<id>/campaigns", restaurant.GetCampaigns)
 
 	api.Put("restaurant/<id>", restaurant.Update)
 	api.Post("restaurant", restaurant.Create)
