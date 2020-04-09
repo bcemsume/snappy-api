@@ -10,7 +10,6 @@ import (
 
 func main() {
 
-	mapper.InitMapper()
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000"
