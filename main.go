@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	mapper "snappy-api/core/mapping"
 	"snappy-api/router"
 
 	"github.com/valyala/fasthttp"
