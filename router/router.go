@@ -19,8 +19,10 @@ import (
 func Route() fasthttp.RequestHandler {
 
 	router := routing.New()
+
 	db := database.InitDB()
 	router.Use(func(c *routing.Context) error {
+
 		c.Set("db", db)
 		c.Response.Header.Set("Content-Type", "application/json")
 
