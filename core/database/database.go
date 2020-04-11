@@ -14,6 +14,7 @@ var log = logger.GetLogInstance("", "")
 // InitDB s
 func InitDB() *gorm.DB {
 	dbConf := config.DBConfigs()
+	appConf := config.GetAppConfig()
 	dbURI := fmt.Sprintf("host=%s user=%s dbname=%s sslmode=%s password=%s", dbConf[config.DBHOST], dbConf[config.DBUSER], dbConf[config.DBNAME], dbConf[config.SSLMODE], dbConf[config.DBPASS]) //Build connection string
 	log.TextInfo(dbURI)
 
@@ -25,6 +26,9 @@ func InitDB() *gorm.DB {
 	db.AutoMigrate(&dbmodels.User{}, &dbmodels.Campaign{}, &dbmodels.ClaimEvent{},
 		&dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{})
 	addForeignKeys(db)
+	if appConf[config.DEBUGMODE] == "true" {
+		db = db.Debug()
+	}
 	return db
 }
 

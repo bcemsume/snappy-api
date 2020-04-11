@@ -20,6 +20,7 @@ const (
 	LOGFILENAME   = "LOG_FILE_NAME"
 	TOKENPASSWORD = "TOKEN_PASSWORD"
 	LOGFILESIZE   = "LOG_FILE_SIZE"
+	DEBUGMODE     = "DEBUG_MODE"
 )
 
 func DBConfigs() map[string]string {
@@ -70,6 +71,21 @@ func GetTokenConfig() map[string]string {
 	}
 
 	conf[TOKENPASSWORD] = os.Getenv(TOKENPASSWORD)
+
+	return conf
+}
+
+func GetAppConfig() map[string]string {
+
+	conf := make(map[string]string)
+
+	e := godotenv.Load()
+	if e != nil {
+		fmt.Println(e)
+		return conf
+	}
+
+	conf[DEBUGMODE] = os.Getenv(DEBUGMODE)
 
 	return conf
 }

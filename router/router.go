@@ -1,7 +1,6 @@
 package router
 
 import (
-	"math"
 	campaign "snappy-api/controllers/campaign"
 	image "snappy-api/controllers/image"
 
@@ -12,17 +11,12 @@ import (
 
 	"snappy-api/core/database"
 
-	"github.com/AdhityaRamadhanus/fasthttpcors"
 	routing "github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
 )
 
 // Route ss
 func Route() fasthttp.RequestHandler {
-
-	withCors := fasthttpcors.NewCorsHandler(fasthttpcors.Options{
-		AllowMaxAge: math.MaxInt32,
-	})
 
 	router := routing.New()
 	db := database.InitDB()
@@ -69,5 +63,5 @@ func Route() fasthttp.RequestHandler {
 	api.Get("campaign", campaign.GetAll)
 	api.Put("campaign/<id>", campaign.Update)
 
-	return withCors.CorsMiddleware(router.HandleRequest)
+	return router.HandleRequest
 }
