@@ -9,5 +9,6 @@ type Restaurant struct {
 	Lang, Long                                                              uint32
 	IsActive, IsDeleted, IsPromo                                            bool
 	Products                                                                []Product
-	Images                                                                  []Image `gorm:"auto_preload"`
+	Images                                                                  []Image           `gorm:"auto_preload"`
+	Users                                                                   []*RestaurantUser `gorm:"many2many:user_restaurants;auto_preload"`
 }

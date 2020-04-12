@@ -3,6 +3,10 @@ package router
 import (
 	campaign "snappy-api/controllers/campaign"
 	image "snappy-api/controllers/image"
+	login "snappy-api/controllers/login"
+	"snappy-api/models"
+
+	resUser "snappy-api/controllers/restaurant.user"
 
 	product "snappy-api/controllers/product"
 	restaurant "snappy-api/controllers/restaurant"
@@ -10,6 +14,8 @@ import (
 	user "snappy-api/controllers/user"
 
 	"snappy-api/core/database"
+
+	sjwt "snappy-api/core/jwt"
 
 	routing "github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
@@ -22,14 +28,26 @@ func Route() fasthttp.RequestHandler {
 
 	db := database.InitDB()
 	router.Use(func(c *routing.Context) error {
-
 		c.Set("db", db)
 		c.Response.Header.Set("Content-Type", "application/json")
-
 		return c.Next()
 	})
 
+	router.Post("/token/user", login.UserLogin)
+	router.Post("/token/restaurant", login.RestaurantLogin)
+
 	api := router.Group("/api/")
+
+	api.Use(func(c *routing.Context) error {
+		tkn := string(c.Request.Header.Peek("Authorization"))
+		tknValidate := sjwt.ValidateJWT(tkn)
+		if tknValidate == false {
+			c.SetStatusCode(401)
+			r := models.NewResponse(false, nil, "token not valid")
+			return c.WriteData(r.MustMarshal())
+		}
+		return c.Next()
+	})
 	// user
 	api.Post("user", user.Create)
 	api.Get("user/<id>", user.GetByID)
@@ -64,6 +82,8 @@ func Route() fasthttp.RequestHandler {
 	api.Get("campaign/<id>/products", campaign.GetProducts)
 	api.Get("campaign", campaign.GetAll)
 	api.Put("campaign/<id>", campaign.Update)
+
+	api.Post("restaurant-user/<id>", resUser.Create)
 
 	return router.HandleRequest
 }

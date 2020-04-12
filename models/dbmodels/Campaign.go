@@ -13,4 +13,5 @@ type Campaign struct {
 	Product    Product
 	Claim      int
 	FinishDate time.Time
+	Users      []*User
 }

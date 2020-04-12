@@ -318,3 +318,93 @@ INFO : 2020.04.11 22:33:34 -- db connected.
 INFO : 2020.04.11 22:40:23 -- pq: invalid input syntax for type integer: "undefined"
 INFO : 2020.04.11 23:01:46 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
 INFO : 2020.04.11 23:01:46 -- db connected.
+INFO : 2020.04.12 00:58:01 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 00:58:01 -- db connected.
+INFO : 2020.04.12 01:02:16 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 01:02:16 -- db connected.
+INFO : 2020.04.12 01:05:50 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 01:05:50 -- db connected.
+INFO : 2020.04.12 01:18:09 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 01:18:09 -- db connected.
+INFO : 2020.04.12 14:24:52 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:24:52 -- db connected.
+INFO : 2020.04.12 14:25:47 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:25:47 -- db connected.
+INFO : 2020.04.12 14:26:37 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:26:37 -- db connected.
+INFO : 2020.04.12 14:46:31 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:46:31 -- db connected.
+INFO : 2020.04.12 14:48:40 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:48:40 -- db connected.
+INFO : 2020.04.12 14:49:43 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:49:43 -- db connected.
+INFO : 2020.04.12 14:50:28 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 14:50:28 -- db connected.
+INFO : 2020.04.12 15:06:13 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:06:13 -- db connected.
+INFO : 2020.04.12 15:06:53 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:06:53 -- db connected.
+INFO : 2020.04.12 15:16:53 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:16:53 -- db connected.
+INFO : 2020.04.12 15:17:35 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:17:35 -- db connected.
+INFO : 2020.04.12 15:18:17 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:18:17 -- db connected.
+INFO : 2020.04.12 15:18:50 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:18:50 -- db connected.
+INFO : 2020.04.12 15:25:56 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:25:56 -- db connected.
+INFO : 2020.04.12 15:34:57 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:34:57 -- db connected.
+INFO : 2020.04.12 15:37:45 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:37:45 -- db connected.
+INFO : 2020.04.12 15:38:46 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:38:46 -- db connected.
+INFO : 2020.04.12 15:40:31 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:40:31 -- db connected.
+INFO : 2020.04.12 15:41:45 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:41:45 -- db connected.
+INFO : 2020.04.12 15:42:13 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:42:13 -- db connected.
+INFO : 2020.04.12 15:42:38 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:42:38 -- db connected.
+INFO : 2020.04.12 15:46:14 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:46:14 -- db connected.
+INFO : 2020.04.12 15:49:48 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 15:49:48 -- db connected.
+INFO : 2020.04.12 16:11:51 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:11:51 -- db connected.
+INFO : 2020.04.12 16:13:04 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:13:04 -- db connected.
+INFO : 2020.04.12 16:14:39 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:14:39 -- db connected.
+INFO : 2020.04.12 16:15:25 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:15:25 -- db connected.
+INFO : 2020.04.12 16:16:31 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:16:31 -- db connected.
+INFO : 2020.04.12 16:27:17 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:27:17 -- db connected.
+INFO : 2020.04.12 16:28:02 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:28:02 -- db connected.
+INFO : 2020.04.12 16:32:13 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:32:13 -- db connected.
+INFO : 2020.04.12 16:32:34 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:32:34 -- db connected.
+INFO : 2020.04.12 16:32:58 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:32:58 -- db connected.
+INFO : 2020.04.12 16:36:08 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:36:08 -- db connected.
+INFO : 2020.04.12 16:37:44 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:37:44 -- db connected.
+INFO : 2020.04.12 16:38:18 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:38:18 -- db connected.
+INFO : 2020.04.12 16:39:02 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:39:02 -- db connected.
+INFO : 2020.04.12 16:40:16 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:40:16 -- db connected.
+INFO : 2020.04.12 16:40:54 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:40:54 -- db connected.
+INFO : 2020.04.12 16:41:41 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:41:41 -- db connected.
+INFO : 2020.04.12 16:42:17 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.12 16:42:17 -- db connected.

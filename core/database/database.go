@@ -24,7 +24,7 @@ func InitDB() *gorm.DB {
 	}
 	log.TextInfo("db connected.")
 	db.AutoMigrate(&dbmodels.User{}, &dbmodels.Campaign{}, &dbmodels.ClaimEvent{},
-		&dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{})
+		&dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{}, &dbmodels.RestaurantUser{})
 	addForeignKeys(db)
 	if appConf[config.DEBUGMODE] == "true" {
 		db = db.Debug()
@@ -37,5 +37,7 @@ func addForeignKeys(db *gorm.DB) {
 	db.Model(&dbmodels.Image{}).AddForeignKey("restaurant_id", "restaurants(id)", "RESTRICT", "RESTRICT")
 	db.Model(&dbmodels.ClaimEvent{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
 	db.Model(&dbmodels.Campaign{}).AddForeignKey("product_id", "products(id)", "RESTRICT", "RESTRICT")
+	db.Table("user_restaurants").AddForeignKey("restaurant_id", "restaurants(id)", "CASCADE", "CASCADE")
+	db.Table("user_restaurants").AddForeignKey("restaurant_user_id", "restaurant_users(id)", "CASCADE", "CASCADE")
 
 }

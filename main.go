@@ -14,7 +14,8 @@ import (
 func main() {
 
 	withCors := fasthttpcors.NewCorsHandler(fasthttpcors.Options{
-		AllowMaxAge: math.MaxInt32,
+		AllowMaxAge:    math.MaxInt32,
+		AllowedMethods: []string{"GET", "POST", "PUT"},
 	})
 
 	port := os.Getenv("PORT")
@@ -23,11 +24,9 @@ func main() {
 	}
 	fmt.Printf("server listen on :" + port)
 	server := &fasthttp.Server{
-		Name:               "snappy-api",
-		Handler:            withCors.CorsMiddleware(router.Route()),
-		ErrorHandler:       errorHandler,
-		MaxRequestBodySize: 10,
-		Concurrency:        1,
+		Name:         "snappy-api",
+		Handler:      withCors.CorsMiddleware(router.Route()),
+		ErrorHandler: errorHandler,
 	}
 	panic(server.ListenAndServe(":" + port))
 }

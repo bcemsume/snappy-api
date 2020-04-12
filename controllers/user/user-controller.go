@@ -22,7 +22,7 @@ func Create(ctx *routing.Context) error {
 	}
 
 	findItem := &dbmodels.User{}
-	dbErr := db.Where(dbmodels.User{UserName: item.UserName}).Or(dbmodels.User{Email: item.Email}).First(&findItem).Error
+	dbErr := db.Where(&dbmodels.User{UserName: item.UserName}).Or(&dbmodels.User{Email: item.Email}).First(&findItem).Error
 
 	if dbErr != gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
