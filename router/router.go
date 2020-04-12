@@ -5,7 +5,6 @@ import (
 	image "snappy-api/controllers/image"
 	login "snappy-api/controllers/login"
 	"snappy-api/models"
-	"strings"
 
 	resUser "snappy-api/controllers/restaurant.user"
 
@@ -31,17 +30,6 @@ func Route() fasthttp.RequestHandler {
 	router.Use(func(c *routing.Context) error {
 		c.Set("db", db)
 		c.Response.Header.Set("Content-Type", "application/json")
-		if !strings.Contains(string(c.Path()), "token") {
-
-			tkn := string(c.Request.Header.Peek("Authorization"))
-			tknValidate := sjwt.ValidateJWT(tkn)
-			if tknValidate == false {
-				c.SetStatusCode(401)
-				r := models.NewResponse(false, nil, "token not valid")
-				c.Abort()
-				return c.WriteData(r.MustMarshal())
-			}
-		}
 
 		return c.Next()
 	})
@@ -52,7 +40,14 @@ func Route() fasthttp.RequestHandler {
 	api := router.Group("/api/")
 
 	api.Use(func(c *routing.Context) error {
-
+		tkn := string(c.Request.Header.Peek("Authorization"))
+		tknValidate := sjwt.ValidateJWT(tkn)
+		if tknValidate == false {
+			c.SetStatusCode(401)
+			r := models.NewResponse(false, nil, "token not valid")
+			c.Abort()
+			return c.WriteData(r.MustMarshal())
+		}
 		return c.Next()
 	})
 	// user
