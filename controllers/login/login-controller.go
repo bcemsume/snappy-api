@@ -24,7 +24,7 @@ func UserLogin(ctx *routing.Context) error {
 		logger.Error(r)
 		return r
 	}
-	expirationTime := time.Now().Add(5 * time.Minute)
+	expirationTime := time.Now().Add(9999 * time.Minute)
 
 	db := ctx.Get("db").(*gorm.DB)
 
@@ -59,7 +59,7 @@ func RestaurantLogin(ctx *routing.Context) error {
 		logger.Error(r)
 		return r
 	}
-	expirationTime := time.Now().Add(5 * time.Minute)
+	expirationTime := time.Now().Add(9999 * time.Minute)
 
 	db := ctx.Get("db").(*gorm.DB)
 
@@ -81,6 +81,6 @@ func RestaurantLogin(ctx *routing.Context) error {
 	}
 	tokenString := sjwt.CreateJWT(claims)
 	l := models.TokenModel{AccessKey: tokenString}
-	r := models.NewResponse(false, l, "OK")
+	r := models.NewResponse(true, l, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
