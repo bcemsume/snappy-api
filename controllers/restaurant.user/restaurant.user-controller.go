@@ -36,3 +36,26 @@ func Create(ctx *routing.Context) error {
 	r := models.NewResponse(true, rest.Users, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
+
+// Get s
+func Get(ctx *routing.Context) error {
+	item := &models.LoginModel{}
+
+	db := ctx.Get("db").(*gorm.DB)
+
+	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
+		return jerr
+	}
+	restUsr := &dbmodels.RestaurantUser{}
+	dbErr := db.Preload("Restaurants").Where(&dbmodels.RestaurantUser{Email: item.UserName}).Or(&dbmodels.RestaurantUser{UserName: item.UserName}).First(&restUsr).Error
+
+	if dbErr == gorm.ErrRecordNotFound {
+		ctx.Response.SetStatusCode(400)
+		r := models.NewResponse(false, nil, "user not found")
+
+		return ctx.WriteData(r.MustMarshal())
+	}
+
+	r := models.NewResponse(true, restUsr.Restaurants, "OK")
+	return ctx.WriteData(r.MustMarshal())
+}

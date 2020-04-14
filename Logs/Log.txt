@@ -430,3 +430,20 @@ INFO : 2020.04.13 23:14:31 -- record not found
 INFO : 2020.04.13 23:14:32 -- record not found
 INFO : 2020.04.13 23:14:32 -- record not found
 INFO : 2020.04.13 23:14:32 -- record not found
+INFO : 2020.04.14 11:19:37 -- record not found
+INFO : 2020.04.14 11:19:38 -- record not found
+INFO : 2020.04.14 11:19:38 -- record not found
+INFO : 2020.04.14 11:19:38 -- record not found
+INFO : 2020.04.14 11:19:39 -- record not found
+INFO : 2020.04.14 13:10:24 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:10:24 -- db connected.
+INFO : 2020.04.14 13:18:17 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:18:17 -- db connected.
+INFO : 2020.04.14 13:19:03 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:19:03 -- db connected.
+INFO : 2020.04.14 13:20:05 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:20:05 -- db connected.
+INFO : 2020.04.14 13:22:36 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:22:36 -- db connected.
+INFO : 2020.04.14 13:23:01 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.14 13:23:01 -- db connected.

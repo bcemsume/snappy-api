@@ -36,6 +36,7 @@ func Route() fasthttp.RequestHandler {
 
 	router.Post("/token/user", login.UserLogin)
 	router.Post("/token/restaurant", login.RestaurantLogin)
+	router.Post("user", user.Create)
 
 	api := router.Group("/api/")
 
@@ -51,7 +52,6 @@ func Route() fasthttp.RequestHandler {
 		return c.Next()
 	})
 	// user
-	api.Post("user", user.Create)
 	api.Get("user/<id>", user.GetByID)
 	api.Get("user", user.GetAll)
 	api.Put("user/<id>", user.Update)
@@ -84,6 +84,9 @@ func Route() fasthttp.RequestHandler {
 	api.Get("campaign/<id>/products", campaign.GetProducts)
 	api.Get("campaign", campaign.GetAll)
 	api.Put("campaign/<id>", campaign.Update)
+
+	// restaurant-user
+	api.Post("restaurant-user", resUser.Get)
 
 	api.Post("restaurant-user/<id>", resUser.Create)
 
