@@ -90,8 +90,7 @@ func GetByID(ctx *routing.Context) error {
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	data := []models.CampaingModel{}
-	db.Model(&dbmodels.Campaign{}).Scan(&data)
-
+	db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Scan(&data)
 	res := models.NewResponse(true, data, "OK")
 
 	return ctx.WriteData(res.MustMarshal())
