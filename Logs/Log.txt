@@ -447,3 +447,41 @@ INFO : 2020.04.14 13:22:36 -- host=localhost user=postgres dbname=postgres sslmo
 INFO : 2020.04.14 13:22:36 -- db connected.
 INFO : 2020.04.14 13:23:01 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
 INFO : 2020.04.14 13:23:01 -- db connected.
+INFO : 2020.04.18 12:58:07 -- record not found
+INFO : 2020.04.18 20:31:00 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+FATAL : 2020.04.18 20:31:00 -- dial tcp [::1]:5432: connect: connection refused
+INFO : 2020.04.18 20:31:00 -- db connected.
+INFO : 2020.04.18 20:31:26 -- sql: database is closed
+INFO : 2020.04.18 20:31:50 -- sql: database is closed
+INFO : 2020.04.18 20:31:51 -- sql: database is closed
+INFO : 2020.04.18 20:31:51 -- sql: database is closed
+INFO : 2020.04.18 20:32:06 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:32:06 -- db connected.
+INFO : 2020.04.18 20:34:41 -- dial tcp [::1]:5432: connect: connection refused
+INFO : 2020.04.18 20:35:57 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+FATAL : 2020.04.18 20:35:57 -- dial tcp [::1]:5432: connect: connection refused
+INFO : 2020.04.18 20:35:57 -- db connected.
+INFO : 2020.04.18 20:36:11 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+FATAL : 2020.04.18 20:36:11 -- dial tcp [::1]:5432: connect: connection refused
+INFO : 2020.04.18 20:36:11 -- db connected.
+INFO : 2020.04.18 20:36:11 -- sql: database is closed
+INFO : 2020.04.18 20:36:40 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:36:40 -- db connected.
+INFO : 2020.04.18 20:39:46 -- record not found
+INFO : 2020.04.18 20:40:19 -- record not found
+INFO : 2020.04.18 20:40:48 -- record not found
+INFO : 2020.04.18 20:40:57 -- record not found
+INFO : 2020.04.18 20:42:06 -- record not found
+INFO : 2020.04.18 20:42:24 -- record not found
+INFO : 2020.04.18 20:42:56 -- record not found
+INFO : 2020.04.18 20:43:23 -- record not found
+INFO : 2020.04.18 20:45:41 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:45:41 -- db connected.
+INFO : 2020.04.18 20:48:08 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:48:08 -- db connected.
+INFO : 2020.04.18 20:49:21 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:49:21 -- db connected.
+INFO : 2020.04.18 20:49:26 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 20:49:26 -- db connected.
+INFO : 2020.04.18 21:01:05 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.18 21:01:05 -- db connected.

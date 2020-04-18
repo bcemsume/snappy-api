@@ -80,7 +80,7 @@ func RestaurantLogin(ctx *routing.Context) error {
 		},
 	}
 	tokenString := sjwt.CreateJWT(claims)
-	l := models.TokenModel{AccessKey: tokenString}
+	l := models.TokenModel{AccessKey: tokenString, ID: user.Restaurants[0].ID}
 	r := models.NewResponse(true, l, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }

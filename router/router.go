@@ -28,6 +28,10 @@ func Route() fasthttp.RequestHandler {
 
 	db := database.InitDB()
 	router.Use(func(c *routing.Context) error {
+
+		if err := db.DB().Ping(); err != nil {
+			db = database.InitDB()
+		}
 		c.Set("db", db)
 		c.Response.Header.Set("Content-Type", "application/json")
 

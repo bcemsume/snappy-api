@@ -22,7 +22,7 @@ func Create(ctx *routing.Context) error {
 	}
 
 	findItem := &dbmodels.Campaign{}
-	dbErr := db.Where(dbmodels.Campaign{}).First(&findItem).Error
+	dbErr := db.Where(&dbmodels.Campaign{ProductID: item.ProductID}).First(&findItem).Error
 
 	if dbErr != gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
@@ -74,7 +74,7 @@ func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	cmp := []models.CampaingModel{}
+	cmp := models.CampaingModel{}
 
 	if err := db.Model(&[]dbmodels.Campaign{}).Where("id = ?", ctx.Param("id")).Scan(&cmp).Error; err != nil {
 		logger.Error(err)
