@@ -11,7 +11,7 @@ import (
 
 // Create s
 func Create(ctx *routing.Context) error {
-	item := &dbmodels.RestaurantUser{}
+	item := dbmodels.RestaurantUser{}
 
 	db := ctx.Get("db").(*gorm.DB)
 
@@ -31,8 +31,15 @@ func Create(ctx *routing.Context) error {
 		return ctx.WriteData(r.MustMarshal())
 	}
 	item.IsActive = true
-	db.Preload("Users").Where("id = ?", ctx.Param("id")).First(&rest)
+	if dbErr := db.Preload("Users").Where("id = ?", ctx.Param("id")).Find(&rest).Error; dbErr == gorm.ErrRecordNotFound {
+		ctx.Response.SetStatusCode(400)
+		r := models.NewResponse(false, nil, "restaurant not found")
 
+		return ctx.WriteData(r.MustMarshal())
+	}
+
+	rest.Users = []*dbmodels.RestaurantUser{&item}
+	db.Save(rest)
 	r := models.NewResponse(true, rest.Users, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }

@@ -65,7 +65,7 @@ func RestaurantLogin(ctx *routing.Context) error {
 
 	user := dbmodels.RestaurantUser{}
 
-	if err := db.Where(&dbmodels.RestaurantUser{UserName: body.UserName}).Or(&dbmodels.RestaurantUser{Password: body.Password}).First(&user).Error; err != nil {
+	if err := db.Preload("Restaurants").Where(&dbmodels.RestaurantUser{UserName: body.UserName}).Or(&dbmodels.RestaurantUser{Password: body.Password}).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "user not found")
