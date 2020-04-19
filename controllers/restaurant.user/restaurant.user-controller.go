@@ -4,6 +4,8 @@ import (
 	"snappy-api/models"
 	dbmodels "snappy-api/models/dbmodels"
 
+	sjwt "snappy-api/core/jwt"
+
 	"github.com/jinzhu/gorm"
 	jsoniter "github.com/json-iterator/go"
 	routing "github.com/qiangxue/fasthttp-routing"
@@ -46,16 +48,15 @@ func Create(ctx *routing.Context) error {
 
 // Get s
 func Get(ctx *routing.Context) error {
-	item := &models.LoginModel{}
-
+	tkn := string(ctx.Request.Header.Peek("Authorization"))
+	_, tValue := sjwt.ValidateJWT(tkn)
 	db := ctx.Get("db").(*gorm.DB)
 
-	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
-		return jerr
-	}
 	restUsr := &dbmodels.RestaurantUser{}
-	dbErr := db.Preload("Restaurants").Where(&dbmodels.RestaurantUser{Email: item.UserName}).Or(&dbmodels.RestaurantUser{UserName: item.UserName}).First(&restUsr).Error
+	usr := &models.RestaurantUserModel{}
+	dbErr := db.Preload("Restaurants").First(&restUsr, tValue.(*sjwt.Claims).UserID).Scan(&usr).Error
 
+	usr.RestaurantID = restUsr.Restaurants[0].ID
 	if dbErr == gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
 		r := models.NewResponse(false, nil, "user not found")
@@ -63,6 +64,6 @@ func Get(ctx *routing.Context) error {
 		return ctx.WriteData(r.MustMarshal())
 	}
 
-	r := models.NewResponse(true, restUsr.Restaurants, "OK")
+	r := models.NewResponse(true, usr, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }

@@ -70,6 +70,27 @@ func Update(ctx *routing.Context) error {
 	return ctx.WriteData(r.MustMarshal())
 }
 
+// Delete s
+func Delete(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+
+	prd := &dbmodels.Product{}
+	if dbErr := db.Preload("Campaigns").First(prd, ctx.Param("id")).Error; dbErr == gorm.ErrRecordNotFound {
+		res := models.NewResponse(false, nil, "Product not found")
+		return ctx.WriteData(res.MustMarshal())
+	}
+
+	if len(prd.Campaigns) > 0 {
+		res := models.NewResponse(false, nil, "this product have a campaign")
+		return ctx.WriteData(res.MustMarshal())
+	}
+
+	db.Delete(prd)
+
+	res := models.NewResponse(true, nil, "OK")
+	return ctx.WriteData(res.MustMarshal())
+}
+
 // GetByID get product by id
 func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")

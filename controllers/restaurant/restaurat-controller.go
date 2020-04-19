@@ -100,7 +100,18 @@ func GetAll(ctx *routing.Context) error {
 func GetProducts(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	prd := []models.ProductModel{}
-	db.Table("products").Where("restaurant_id = ?", ctx.Param("id")).Select("products.description, products.price, products.id, products.finish_date").Scan(&prd)
+	db.Table("products").Where("deleted_at is null and restaurant_id = ?", ctx.Param("id")).Select("products.description, products.price, products.id, products.finish_date, products.restaurant_id").Scan(&prd)
+
+	// db.Model(&dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Preload("Campaigns").Related(&prd).Find(&prd)
+	res := models.NewResponse(true, prd, "OK")
+	return ctx.WriteData(res.MustMarshal())
+}
+
+// GetCampaigns s
+func GetCampaigns(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+	prd := []models.CampaingModel{}
+	db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Where("products.restaurant_id = ?", ctx.Param("id")).Scan(&prd)
 
 	// db.Model(&dbmodels.Restaurant{}).Where("restaurant_id = ?", ctx.Param("id")).Preload("Campaigns").Related(&prd).Find(&prd)
 	res := models.NewResponse(true, prd, "OK")

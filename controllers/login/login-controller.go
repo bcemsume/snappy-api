@@ -37,7 +37,7 @@ func UserLogin(ctx *routing.Context) error {
 		return ctx.WriteData(res.MustMarshal())
 	}
 
-	claims := &sjwt.UserClaims{
+	claims := &sjwt.Claims{
 		UserID: user.ID,
 		StandardClaims: jwt.StandardClaims{
 			// In JWT, the expiry time is expressed as unix milliseconds
@@ -65,22 +65,23 @@ func RestaurantLogin(ctx *routing.Context) error {
 
 	user := dbmodels.RestaurantUser{}
 
-	if err := db.Preload("Restaurants").Where(&dbmodels.RestaurantUser{UserName: body.UserName}).Or(&dbmodels.RestaurantUser{Password: body.Password}).First(&user).Error; err != nil {
+	if err := db.Preload("Restaurants").Where(&dbmodels.RestaurantUser{UserName: body.UserName, Password: body.Password}).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "user not found")
 		return ctx.WriteData(res.MustMarshal())
 	}
 
-	claims := &sjwt.RestaurantClaims{
-		RestaurantID: user.ID,
+	claims := &sjwt.Claims{
+		RestaurantID: user.Restaurants[0].ID,
+		UserID:       user.ID,
 		StandardClaims: jwt.StandardClaims{
 			// In JWT, the expiry time is expressed as unix milliseconds
 			ExpiresAt: expirationTime.Unix(),
 		},
 	}
 	tokenString := sjwt.CreateJWT(claims)
-	l := models.TokenModel{AccessKey: tokenString, ID: user.Restaurants[0].ID}
+	l := models.TokenModel{AccessKey: tokenString}
 	r := models.NewResponse(true, l, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }

@@ -4,13 +4,8 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-type RestaurantClaims struct {
-	RestaurantID uint
-	jwt.StandardClaims
-}
-
-type UserClaims struct {
-	UserID uint
+type Claims struct {
+	UserID, RestaurantID uint
 	jwt.StandardClaims
 }
 
@@ -30,24 +25,15 @@ func CreateJWT(claims jwt.Claims) string {
 }
 
 // ValidateJWT s
-func ValidateJWT(tknStr string) bool {
+func ValidateJWT(tknStr string) (bool, interface{}) {
 
-	userClaims := &UserClaims{}
-	tkn, err := jwt.ParseWithClaims(tknStr, userClaims, func(token *jwt.Token) (interface{}, error) {
+	restClaims := &Claims{}
+
+	t, e := jwt.ParseWithClaims(tknStr, restClaims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
-
-	if err != nil {
-		restClaims := &RestaurantClaims{}
-
-		t, e := jwt.ParseWithClaims(tknStr, restClaims, func(token *jwt.Token) (interface{}, error) {
-			return jwtKey, nil
-		})
-		if e != nil {
-			return false
-		}
-		return t.Valid
+	if e != nil {
+		return false, nil
 	}
-
-	return tkn.Valid
+	return t.Valid, t.Claims.(*Claims)
 }

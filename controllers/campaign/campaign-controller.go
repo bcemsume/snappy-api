@@ -104,3 +104,14 @@ func GetProducts(ctx *routing.Context) error {
 	res := models.NewResponse(true, cmp, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
+
+// Delete s
+func Delete(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+	cmp := &dbmodels.Campaign{}
+	db.First(cmp, ctx.Param("id"))
+
+	db.Delete(cmp)
+	res := models.NewResponse(true, cmp, "OK")
+	return ctx.WriteData(res.MustMarshal())
+}

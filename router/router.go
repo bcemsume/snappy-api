@@ -46,7 +46,7 @@ func Route() fasthttp.RequestHandler {
 
 	api.Use(func(c *routing.Context) error {
 		tkn := string(c.Request.Header.Peek("Authorization"))
-		tknValidate := sjwt.ValidateJWT(tkn)
+		tknValidate, _ := sjwt.ValidateJWT(tkn)
 		if tknValidate == false {
 			c.SetStatusCode(401)
 			r := models.NewResponse(false, nil, "token not valid")
@@ -64,7 +64,7 @@ func Route() fasthttp.RequestHandler {
 	api.Get("restaurant", restaurant.GetAll)
 	api.Get("restaurant/<id>/products", restaurant.GetProducts)
 	api.Get("restaurant/<id>/images", restaurant.GetImages)
-	// api.Get("restaurant/<id>/campaigns", restaurant.GetCampaigns)
+	api.Get("restaurant/<id>/campaigns", restaurant.GetCampaigns)
 
 	api.Put("restaurant/<id>", restaurant.Update)
 	api.Post("restaurant", restaurant.Create)
@@ -75,6 +75,7 @@ func Route() fasthttp.RequestHandler {
 	api.Get("product/<id>/campaigns", product.GetCampaigns)
 	api.Get("product", product.GetAll)
 	api.Put("product/<id>", product.Update)
+	api.Delete("product/<id>", product.Delete)
 
 	// image
 	api.Post("image", image.Create)
@@ -88,6 +89,7 @@ func Route() fasthttp.RequestHandler {
 	api.Get("campaign/<id>/products", campaign.GetProducts)
 	api.Get("campaign", campaign.GetAll)
 	api.Put("campaign/<id>", campaign.Update)
+	api.Delete("campaign/<id>", campaign.Delete)
 
 	// restaurant-user
 	api.Get("restaurant-user", resUser.Get)

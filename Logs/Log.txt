@@ -561,3 +561,145 @@ INFO : 2020.04.19 00:08:26 -- host=localhost user=postgres dbname=postgres sslmo
 INFO : 2020.04.19 00:08:26 -- db connected.
 INFO : 2020.04.19 00:08:41 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
 INFO : 2020.04.19 00:08:41 -- db connected.
+INFO : 2020.04.19 13:00:38 -- record not found
+INFO : 2020.04.19 13:00:41 -- record not found
+INFO : 2020.04.19 13:01:39 -- record not found
+INFO : 2020.04.19 13:04:46 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 13:04:46 -- db connected.
+INFO : 2020.04.19 13:25:33 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 13:25:33 -- db connected.
+INFO : 2020.04.19 13:26:38 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 13:26:38 -- db connected.
+INFO : 2020.04.19 13:28:00 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 13:28:00 -- db connected.
+INFO : 2020.04.19 13:28:28 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 13:28:28 -- db connected.
+INFO : 2020.04.19 13:29:41 -- record not found
+INFO : 2020.04.19 13:29:44 -- record not found
+INFO : 2020.04.19 13:29:46 -- record not found
+INFO : 2020.04.19 13:29:50 -- record not found
+INFO : 2020.04.19 13:29:51 -- record not found
+INFO : 2020.04.19 13:29:56 -- record not found
+INFO : 2020.04.19 13:30:13 -- record not found
+INFO : 2020.04.19 13:30:18 -- record not found
+INFO : 2020.04.19 15:54:57 -- record not found
+INFO : 2020.04.19 15:54:59 -- record not found
+INFO : 2020.04.19 16:23:51 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:23:51 -- db connected.
+INFO : 2020.04.19 16:26:35 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:26:35 -- db connected.
+INFO : 2020.04.19 16:27:14 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:27:14 -- db connected.
+INFO : 2020.04.19 16:27:31 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:27:31 -- db connected.
+INFO : 2020.04.19 16:28:32 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:28:32 -- db connected.
+INFO : 2020.04.19 16:30:43 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:30:43 -- db connected.
+INFO : 2020.04.19 16:30:52 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:30:52 -- db connected.
+INFO : 2020.04.19 16:32:39 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:32:39 -- db connected.
+INFO : 2020.04.19 16:33:00 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:33:00 -- db connected.
+INFO : 2020.04.19 16:35:35 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:35:35 -- db connected.
+INFO : 2020.04.19 16:35:53 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:35:53 -- db connected.
+INFO : 2020.04.19 16:36:23 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:36:23 -- db connected.
+INFO : 2020.04.19 16:48:29 -- record not found
+INFO : 2020.04.19 16:48:31 -- record not found
+INFO : 2020.04.19 16:50:37 -- record not found
+INFO : 2020.04.19 16:50:40 -- record not found
+INFO : 2020.04.19 16:53:01 -- record not found
+INFO : 2020.04.19 16:53:02 -- record not found
+INFO : 2020.04.19 16:55:09 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:55:09 -- db connected.
+INFO : 2020.04.19 16:58:19 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 16:58:19 -- db connected.
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:26 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:27 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 16:59:28 -- record not found
+INFO : 2020.04.19 17:00:21 -- record not found
+INFO : 2020.04.19 17:00:24 -- record not found
+INFO : 2020.04.19 17:01:01 -- record not found
+INFO : 2020.04.19 17:03:21 -- record not found
+INFO : 2020.04.19 17:03:21 -- record not found
+INFO : 2020.04.19 17:03:21 -- record not found
+INFO : 2020.04.19 17:03:21 -- record not found
+INFO : 2020.04.19 17:03:22 -- record not found
+INFO : 2020.04.19 17:03:22 -- record not found
+INFO : 2020.04.19 17:03:22 -- record not found
+INFO : 2020.04.19 17:03:22 -- record not found
+INFO : 2020.04.19 17:03:22 -- record not found
+INFO : 2020.04.19 17:03:23 -- record not found
+INFO : 2020.04.19 17:03:23 -- record not found
+INFO : 2020.04.19 17:03:23 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:24 -- record not found
+INFO : 2020.04.19 17:03:25 -- record not found
+INFO : 2020.04.19 17:03:25 -- record not found
+INFO : 2020.04.19 17:03:25 -- record not found
+INFO : 2020.04.19 17:03:25 -- record not found
+INFO : 2020.04.19 17:03:25 -- record not found
+INFO : 2020.04.19 17:04:20 -- record not found
+INFO : 2020.04.19 17:08:51 -- record not found
+INFO : 2020.04.19 17:28:50 -- record not found
+INFO : 2020.04.19 17:28:53 -- record not found
+INFO : 2020.04.19 17:29:44 -- record not found
+INFO : 2020.04.19 20:23:36 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 20:23:36 -- db connected.
+INFO : 2020.04.19 20:24:32 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 20:24:32 -- db connected.
+INFO : 2020.04.19 21:21:27 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 21:21:27 -- db connected.
+INFO : 2020.04.19 21:22:30 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 21:22:30 -- db connected.
+INFO : 2020.04.19 21:23:04 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 21:23:04 -- db connected.
+INFO : 2020.04.19 21:25:26 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 21:25:26 -- db connected.
+INFO : 2020.04.19 21:29:21 -- record not found
+INFO : 2020.04.19 21:29:28 -- record not found
+INFO : 2020.04.19 21:31:48 -- record not found
+INFO : 2020.04.19 21:32:05 -- record not found
+INFO : 2020.04.19 21:32:06 -- record not found
+INFO : 2020.04.19 21:33:44 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 21:33:44 -- db connected.
+INFO : 2020.04.19 21:34:58 -- record not found
+INFO : 2020.04.19 21:35:00 -- record not found
+INFO : 2020.04.19 22:05:25 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 22:05:25 -- db connected.
+INFO : 2020.04.19 22:05:48 -- host=localhost user=postgres dbname=postgres sslmode=disable password=1Q2w3e4r
+INFO : 2020.04.19 22:05:48 -- db connected.

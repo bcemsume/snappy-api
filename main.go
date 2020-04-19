@@ -15,7 +15,7 @@ func main() {
 
 	withCors := fasthttpcors.NewCorsHandler(fasthttpcors.Options{
 		AllowMaxAge:    math.MaxInt32,
-		AllowedMethods: []string{"GET", "POST", "PUT"},
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
 	})
 
 	port := os.Getenv("PORT")
