@@ -34,7 +34,6 @@ func InitDB() *gorm.DB {
 
 func addForeignKeys(db *gorm.DB) {
 	db.Model(&dbmodels.Product{}).AddForeignKey("restaurant_id", "restaurants(id)", "RESTRICT", "RESTRICT")
-	db.Model(&dbmodels.Image{}).AddForeignKey("restaurant_id", "restaurants(id)", "RESTRICT", "RESTRICT")
 	db.Model(&dbmodels.ClaimEvent{}).AddForeignKey("user_id", "users(id)", "RESTRICT", "RESTRICT")
 	db.Model(&dbmodels.Campaign{}).AddForeignKey("product_id", "products(id)", "RESTRICT", "RESTRICT")
 	db.Table("user_restaurants").AddForeignKey("restaurant_id", "restaurants(id)", "CASCADE", "CASCADE")

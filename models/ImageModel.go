@@ -2,7 +2,13 @@ package models
 
 // ImageModel s
 type ImageModel struct {
-	ID, RestaurantID uint
-	ImageURL         string
-	Order, Type      byte
+	RestaurantID uint
+	Images       []Image
+}
+
+// Image s
+type Image struct {
+	ImageURL    string
+	ID          uint
+	Order, Type byte
 }

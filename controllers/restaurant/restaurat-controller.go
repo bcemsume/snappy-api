@@ -4,6 +4,7 @@ import (
 	"snappy-api/core/logger"
 	"snappy-api/models"
 	dbmodels "snappy-api/models/dbmodels"
+	"strconv"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -122,8 +123,44 @@ func GetCampaigns(ctx *routing.Context) error {
 func GetImages(ctx *routing.Context) error {
 
 	db := ctx.Get("db").(*gorm.DB)
-	data := []models.ImageModel{}
-	db.Model(&dbmodels.Image{}).Where("restaurant_id = ?", ctx.Param("id")).Scan(&data)
-	res := models.NewResponse(true, data, "OK")
+	data := []models.Image{}
+	id, _ := strconv.ParseUint(ctx.Param("id"), 10, 64)
+	db.Model(&dbmodels.Image{}).Where("restaurant_id = ?", id).Scan(&data)
+	res := models.NewResponse(true, &models.ImageModel{RestaurantID: 1 << id, Images: data}, "OK")
+	return ctx.WriteData(res.MustMarshal())
+}
+
+// AddImages s
+func AddImages(ctx *routing.Context) error {
+	db := ctx.Get("db").(*gorm.DB)
+	logger := logger.GetLogInstance("", "")
+	body := models.ImageModel{}
+
+	if r := jsoniter.Unmarshal(ctx.Request.Body(), &body); r != nil {
+		logger.Error(r)
+		return r
+	}
+
+	if e := db.Find(&dbmodels.Restaurant{}, body.RestaurantID).Error; e == gorm.ErrRecordNotFound {
+		res := models.NewResponse(false, nil, "restaurant not found")
+		return ctx.WriteData(res.MustMarshal())
+	}
+	img := &[]dbmodels.Image{}
+	if e := db.Where(&dbmodels.Image{RestaurantID: body.RestaurantID}).Find(img).Error; e != gorm.ErrRecordNotFound {
+		db.Delete(img)
+	}
+
+	for _, elem := range body.Images {
+		i := &dbmodels.Image{
+			RestaurantID: body.RestaurantID,
+			ImageURL:     elem.ImageURL,
+			Order:        elem.Order,
+			Type:         elem.Type,
+		}
+
+		db.Save(i)
+	}
+
+	res := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
