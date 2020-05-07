@@ -46,7 +46,7 @@ func UserLogin(ctx *routing.Context) error {
 	}
 	tokenString := sjwt.CreateJWT(claims)
 	l := models.TokenModel{AccessKey: tokenString}
-	r := models.NewResponse(false, l, "OK")
+	r := models.NewResponse(true, l, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
 

@@ -820,3 +820,8 @@ INFO : 2020.04.21 23:27:38 -- record not found
 INFO : 2020.04.21 23:27:39 -- record not found
 INFO : 2020.04.21 23:28:26 -- record not found
 INFO : 2020.04.21 23:28:28 -- record not found
+INFO : 2020.05.05 16:58:12 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.05 16:58:12 -- db connected.
+INFO : 2020.05.07 21:33:29 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.07 21:33:30 -- db connected.
+INFO : 2020.05.07 21:39:21 -- record not found
