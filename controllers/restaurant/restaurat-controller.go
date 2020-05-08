@@ -43,26 +43,33 @@ func Update(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	restID := ctx.Param("id")
 
-	rest := &dbmodels.Restaurant{}
+	rest := &models.RestaurantModel{}
 
 	if r := jsoniter.Unmarshal(ctx.Request.Body(), &rest); r != nil {
 		logger.Error(r)
 		return r
 	}
 
-	if err := db.Where("id = ?", restID).First(&rest).Error; err != nil {
+	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", restID).Scan(&rest).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		r := models.NewResponse(false, nil, "restaurant not found")
 		return ctx.WriteData(r.MustMarshal())
 	}
+	if rest.Logo != "" {
 
-	if err := jsoniter.Unmarshal(ctx.Request.Body(), &rest); err != nil {
-		ctx.Response.SetStatusCode(400)
-		logger.Error(err)
-		r := models.NewResponse(false, nil, "unexpected error")
+		img := &dbmodels.Image{}
+		if e := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).Find(img).Error; e != gorm.ErrRecordNotFound {
+			db.Delete(img)
+		}
 
-		return ctx.WriteData(r.MustMarshal())
+		i := &dbmodels.Image{
+			RestaurantID: rest.ID,
+			ImageURL:     rest.Logo,
+			Order:        0,
+			Type:         2,
+		}
+		db.Save(i)
 	}
 
 	db.Save(&rest)
@@ -75,14 +82,20 @@ func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
-	rest := dbmodels.Restaurant{}
+	rest := models.RestaurantModel{}
 
-	if err := db.Where("id = ?", ctx.Param("id")).First(&rest).Error; err != nil {
+	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", ctx.Param("id")).Scan(&rest).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
 		return ctx.WriteData(res.MustMarshal())
 	}
+
+	img := dbmodels.Image{}
+	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).First(&img).Error; err == nil {
+		rest.Logo = img.ImageURL
+	}
+
 	res := models.NewResponse(true, rest, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
@@ -90,8 +103,9 @@ func GetByID(ctx *routing.Context) error {
 // GetAll get all restaurant
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
-	data := []dbmodels.Restaurant{}
-	db.Find(&data)
+	data := []models.RestaurantListModel{}
+	db.Model(&dbmodels.Restaurant{}).Select("restaurants.id, restaurants.title, images.image_url as logo").Joins("join images on restaurants.id = images.restaurant_id").Where("images.type = 2 and images.deleted_at is null").Scan(&data)
+
 	res := models.NewResponse(true, data, "OK")
 
 	return ctx.WriteData(res.MustMarshal())
@@ -125,7 +139,7 @@ func GetImages(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	data := []models.Image{}
 	id, _ := strconv.ParseUint(ctx.Param("id"), 10, 64)
-	db.Model(&dbmodels.Image{}).Where("restaurant_id = ?", id).Scan(&data)
+	db.Model(&dbmodels.Image{}).Where("restaurant_id = ? and type = 1", id).Scan(&data)
 	res := models.NewResponse(true, &models.ImageModel{RestaurantID: 1 << id, Images: data}, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
@@ -146,7 +160,7 @@ func AddImages(ctx *routing.Context) error {
 		return ctx.WriteData(res.MustMarshal())
 	}
 	img := &[]dbmodels.Image{}
-	if e := db.Where(&dbmodels.Image{RestaurantID: body.RestaurantID}).Find(img).Error; e != gorm.ErrRecordNotFound {
+	if e := db.Where(&dbmodels.Image{RestaurantID: body.RestaurantID, Type: 1}).Find(img).Error; e != gorm.ErrRecordNotFound {
 		db.Delete(img)
 	}
 

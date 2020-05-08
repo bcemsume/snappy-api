@@ -825,3 +825,30 @@ INFO : 2020.05.05 16:58:12 -- db connected.
 INFO : 2020.05.07 21:33:29 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
 INFO : 2020.05.07 21:33:30 -- db connected.
 INFO : 2020.05.07 21:39:21 -- record not found
+INFO : 2020.05.08 11:46:15 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 11:46:15 -- db connected.
+INFO : 2020.05.08 11:46:50 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:46:50 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:46:51 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:47:00 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:47:01 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:47:30 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 11:47:30 -- db connected.
+INFO : 2020.05.08 11:48:57 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 11:48:58 -- db connected.
+INFO : 2020.05.08 11:54:39 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 11:54:39 -- db connected.
+INFO : 2020.05.08 11:54:58 -- record not found
+INFO : 2020.05.08 11:55:54 -- record not found
+INFO : 2020.05.08 11:56:32 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.08 11:58:21 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 11:58:22 -- db connected.
+INFO : 2020.05.08 11:58:40 -- record not found
+INFO : 2020.05.08 12:45:34 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 12:45:34 -- db connected.
+INFO : 2020.05.08 12:46:22 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 12:46:22 -- db connected.
+INFO : 2020.05.08 12:47:35 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 12:47:36 -- db connected.
+INFO : 2020.05.08 12:50:31 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 12:50:31 -- db connected.
