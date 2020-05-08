@@ -43,34 +43,44 @@ func Update(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	restID := ctx.Param("id")
 
-	rest := &models.RestaurantModel{}
+	body := &models.RestaurantModel{}
 
-	if r := jsoniter.Unmarshal(ctx.Request.Body(), &rest); r != nil {
+	rest := &dbmodels.Restaurant{}
+
+	if r := jsoniter.Unmarshal(ctx.Request.Body(), &body); r != nil {
 		logger.Error(r)
 		return r
 	}
 
-	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", restID).Scan(&rest).Error; err != nil {
+	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", restID).First(&rest).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		r := models.NewResponse(false, nil, "restaurant not found")
 		return ctx.WriteData(r.MustMarshal())
 	}
-	if rest.Logo != "" {
-
+	if body.Logo != "" {
 		img := &dbmodels.Image{}
-		if e := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).Find(img).Error; e != gorm.ErrRecordNotFound {
+		if e := db.Where(&dbmodels.Image{RestaurantID: body.ID, Type: 2}).Find(img).Error; e != gorm.ErrRecordNotFound {
 			db.Delete(img)
 		}
-
 		i := &dbmodels.Image{
-			RestaurantID: rest.ID,
-			ImageURL:     rest.Logo,
+			RestaurantID: body.ID,
+			ImageURL:     body.Logo,
 			Order:        0,
 			Type:         2,
 		}
+
 		db.Save(i)
 	}
+
+	rest.Address = body.Address
+	rest.Email = body.Address
+	rest.Lang = body.Lang
+	rest.Long = body.Long
+	rest.PaymentMethods = body.PaymentMethods
+	rest.WorkingDays = body.WorkingDays
+	rest.Phone = body.Phone
+	rest.Title = body.Title
 
 	db.Save(&rest)
 	r := models.NewResponse(true, rest, "OK")
@@ -91,9 +101,23 @@ func GetByID(ctx *routing.Context) error {
 		return ctx.WriteData(res.MustMarshal())
 	}
 
-	img := dbmodels.Image{}
-	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).First(&img).Error; err == nil {
-		rest.Logo = img.ImageURL
+	logo := dbmodels.Image{}
+	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).First(&logo).Error; err == nil {
+		rest.Logo = logo.ImageURL
+	}
+
+	imgs := []dbmodels.Image{}
+	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 1}).Find(&imgs).Error; err == nil {
+
+		for _, elem := range imgs {
+			i := &models.Image{
+				ImageURL: elem.ImageURL,
+				Order:    elem.Order,
+				Type:     elem.Type,
+			}
+			rest.Images = append(rest.Images, *i)
+		}
+
 	}
 
 	res := models.NewResponse(true, rest, "OK")
