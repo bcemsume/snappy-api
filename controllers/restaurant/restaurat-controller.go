@@ -133,7 +133,7 @@ func GetByID(ctx *routing.Context) error {
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	data := []models.RestaurantListModel{}
-	db.Model(&dbmodels.Restaurant{}).Select("restaurants.id, restaurants.title, images.image_url as logo").Joins("join images on restaurants.id = images.restaurant_id").Where("images.type = 2 and images.deleted_at is null").Scan(&data)
+	db.Model(&dbmodels.Restaurant{}).Select("restaurants.id, restaurants.title,restaurants.lang, restaurants.long images.image_url as logo").Joins("join images on restaurants.id = images.restaurant_id").Where("images.type = 2 and images.deleted_at is null").Scan(&data)
 
 	res := models.NewResponse(true, data, "OK")
 
