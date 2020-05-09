@@ -30,6 +30,11 @@ func UserLogin(ctx *routing.Context) error {
 
 	user := dbmodels.User{}
 
+	if body.UserName == "" || body.Password == "" {
+		res := models.NewResponse(false, nil, "user not found")
+		return ctx.WriteData(res.MustMarshal())
+	}
+
 	if err := db.Where(&dbmodels.User{UserName: body.UserName, Password: body.Password}).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)

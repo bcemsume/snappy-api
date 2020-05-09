@@ -860,3 +860,121 @@ INFO : 2020.05.08 20:29:59 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaw
 INFO : 2020.05.08 20:30:00 -- db connected.
 INFO : 2020.05.08 20:31:17 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
 INFO : 2020.05.08 20:31:18 -- db connected.
+INFO : 2020.05.08 23:55:02 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 23:55:04 -- db connected.
+INFO : 2020.05.08 23:55:35 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.08 23:55:36 -- db connected.
+INFO : 2020.05.09 01:42:05 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 01:42:05 -- db connected.
+INFO : 2020.05.09 15:23:30 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 15:23:31 -- db connected.
+INFO : 2020.05.09 15:23:31 -- record not found
+INFO : 2020.05.09 15:23:35 -- record not found
+INFO : 2020.05.09 15:23:50 -- record not found
+INFO : 2020.05.09 15:25:13 -- record not found
+INFO : 2020.05.09 15:25:31 -- record not found
+INFO : 2020.05.09 15:42:26 -- record not found
+INFO : 2020.05.09 15:43:02 -- record not found
+INFO : 2020.05.09 15:43:42 -- record not found
+INFO : 2020.05.09 15:44:06 -- record not found
+INFO : 2020.05.09 15:44:17 -- record not found
+INFO : 2020.05.09 15:44:25 -- record not found
+INFO : 2020.05.09 15:49:05 -- record not found
+INFO : 2020.05.09 15:51:35 -- record not found
+INFO : 2020.05.09 15:54:03 -- record not found
+INFO : 2020.05.09 15:54:37 -- record not found
+INFO : 2020.05.09 15:55:01 -- record not found
+INFO : 2020.05.09 15:55:24 -- record not found
+INFO : 2020.05.09 15:58:59 -- record not found
+INFO : 2020.05.09 15:59:50 -- record not found
+INFO : 2020.05.09 16:05:20 -- record not found
+INFO : 2020.05.09 16:06:07 -- record not found
+INFO : 2020.05.09 16:07:01 -- record not found
+INFO : 2020.05.09 16:08:13 -- record not found
+INFO : 2020.05.09 16:08:52 -- record not found
+INFO : 2020.05.09 16:09:28 -- record not found
+INFO : 2020.05.09 16:09:52 -- record not found
+INFO : 2020.05.09 16:09:57 -- record not found
+INFO : 2020.05.09 16:10:05 -- record not found
+INFO : 2020.05.09 16:10:10 -- record not found
+INFO : 2020.05.09 16:10:20 -- record not found
+INFO : 2020.05.09 16:11:54 -- record not found
+INFO : 2020.05.09 16:17:04 -- record not found
+INFO : 2020.05.09 16:22:51 -- record not found
+INFO : 2020.05.09 16:25:00 -- record not found
+INFO : 2020.05.09 16:39:13 -- record not found
+INFO : 2020.05.09 16:39:22 -- record not found
+INFO : 2020.05.09 16:39:32 -- record not found
+INFO : 2020.05.09 16:39:53 -- record not found
+INFO : 2020.05.09 18:14:04 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 18:14:04 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 18:14:05 -- db connected.
+INFO : 2020.05.09 18:14:05 -- db connected.
+INFO : 2020.05.09 18:16:57 -- record not found
+INFO : 2020.05.09 18:17:45 -- record not found
+INFO : 2020.05.09 18:29:29 -- record not found
+INFO : 2020.05.09 22:26:39 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 22:26:39 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.09 22:26:40 -- db connected.
+INFO : 2020.05.09 22:26:40 -- db connected.
+INFO : 2020.05.09 22:28:18 -- record not found
+INFO : 2020.05.09 22:29:36 -- record not found
+INFO : 2020.05.09 22:29:54 -- record not found
+INFO : 2020.05.09 22:30:11 -- record not found
+INFO : 2020.05.09 22:30:24 -- record not found
+INFO : 2020.05.09 22:30:36 -- record not found
+INFO : 2020.05.09 22:30:44 -- record not found
+INFO : 2020.05.09 22:42:24 -- record not found
+INFO : 2020.05.09 22:42:31 -- record not found
+INFO : 2020.05.09 23:03:59 -- record not found
+INFO : 2020.05.09 23:12:06 -- record not found
+INFO : 2020.05.09 23:12:49 -- record not found
+INFO : 2020.05.09 23:13:40 -- record not found
+INFO : 2020.05.09 23:14:25 -- record not found
+INFO : 2020.05.09 23:14:52 -- record not found
+INFO : 2020.05.09 23:15:09 -- record not found
+INFO : 2020.05.09 23:16:12 -- record not found
+INFO : 2020.05.09 23:16:18 -- record not found
+INFO : 2020.05.09 23:17:06 -- record not found
+INFO : 2020.05.09 23:17:44 -- record not found
+INFO : 2020.05.09 23:20:53 -- record not found
+INFO : 2020.05.09 23:21:25 -- record not found
+INFO : 2020.05.09 23:24:41 -- record not found
+INFO : 2020.05.09 23:25:14 -- record not found
+INFO : 2020.05.09 23:27:02 -- record not found
+INFO : 2020.05.09 23:27:19 -- record not found
+INFO : 2020.05.09 23:27:28 -- record not found
+INFO : 2020.05.09 23:27:48 -- record not found
+INFO : 2020.05.09 23:28:53 -- record not found
+INFO : 2020.05.09 23:37:21 -- record not found
+INFO : 2020.05.10 00:05:18 -- record not found
+INFO : 2020.05.10 00:06:17 -- record not found
+INFO : 2020.05.10 00:06:29 -- record not found
+INFO : 2020.05.10 00:07:27 -- record not found
+INFO : 2020.05.10 00:07:39 -- record not found
+INFO : 2020.05.10 00:10:05 -- record not found
+INFO : 2020.05.10 00:10:15 -- record not found
+INFO : 2020.05.10 00:11:15 -- record not found
+INFO : 2020.05.10 00:11:17 -- record not found
+INFO : 2020.05.10 00:41:39 -- record not found
+INFO : 2020.05.10 00:41:47 -- record not found
+INFO : 2020.05.10 00:45:10 -- record not found
+INFO : 2020.05.10 00:46:56 -- record not found
+INFO : 2020.05.10 00:46:59 -- record not found
+INFO : 2020.05.10 00:47:26 -- models.RestaurantModel.Long: assertInteger: can not decode float as int, error found in #10 byte of ...|,"Long":40.939109646|..., bigger context ...|i,Sali,Carsamba,Persembe,Cuma,Cumartesi","Long":40.939109646106154,"ID":1}|...
+INFO : 2020.05.10 00:47:55 -- record not found
+INFO : 2020.05.10 00:48:50 -- models.RestaurantModel.Long: assertInteger: can not decode float as int, error found in #10 byte of ...|,"Long":40.938597197|..., bigger context ...|i,Sali,Carsamba,Persembe,Cuma,Cumartesi","Long":40.93859719715187,"ID":1}|...
+INFO : 2020.05.10 00:52:19 -- record not found
+INFO : 2020.05.10 00:52:31 -- record not found
+INFO : 2020.05.10 00:52:58 -- record not found
+INFO : 2020.05.10 00:54:13 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.10 00:54:14 -- db connected.
+INFO : 2020.05.10 00:54:43 -- record not found
+INFO : 2020.05.10 00:55:37 -- models.RestaurantModel.Long: ReadString: expects " or n, but found 4, error found in #10 byte of ...|","Long":40.98321026|..., bigger context ...|si,Sali,Carsamba,Persembe,Cuma,Cumartesi","Long":40.983210260594284,"ID":1}|...
+INFO : 2020.05.10 00:55:44 -- record not found
+INFO : 2020.05.10 00:56:55 -- models.RestaurantModel.Long: ReadString: expects " or n, but found 4, error found in #10 byte of ...|","Long":40.95466600|..., bigger context ...|si,Sali,Carsamba,Persembe,Cuma,Cumartesi","Long":40.95466600658833,"ID":1}|...
+INFO : 2020.05.10 00:56:58 -- record not found
+INFO : 2020.05.10 00:58:43 -- record not found
+INFO : 2020.05.10 01:00:24 -- record not found
+INFO : 2020.05.10 01:06:01 -- record not found
+INFO : 2020.05.10 01:06:33 -- record not found

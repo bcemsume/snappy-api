@@ -120,6 +120,11 @@ func GetByID(ctx *routing.Context) error {
 
 	}
 
+	cmp := []models.CampaingModel{}
+	if err := db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Where("products.restaurant_id = ?", ctx.Param("id")).Scan(&cmp).Error; err == nil {
+		rest.Campaigns = cmp
+	}
+
 	res := models.NewResponse(true, rest, "OK")
 	return ctx.WriteData(res.MustMarshal())
 }
