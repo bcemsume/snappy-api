@@ -5,6 +5,8 @@ import (
 	"snappy-api/models"
 	"snappy-api/models/dbmodels"
 
+	sjwt "snappy-api/core/jwt"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	jsoniter "github.com/json-iterator/go"
@@ -85,6 +87,27 @@ func GetByID(ctx *routing.Context) error {
 	}
 	res := models.NewResponse(true, user, "OK")
 	return ctx.WriteData(res.MustMarshal())
+}
+
+func GetUserDetail(ctx *routing.Context) error {
+
+	logger := logger.GetLogInstance("", "")
+	db := ctx.Get("db").(*gorm.DB)
+
+	user := dbmodels.User{}
+	tkn := string(ctx.Request.Header.Peek("Authorization"))
+
+	_, tokn := sjwt.ValidateJWT(tkn)
+
+	if err := db.Where("id = ?", tokn.(*sjwt.Claims).UserID).First(&user).Error; err != nil {
+		logger.Error(err)
+		ctx.Response.SetStatusCode(404)
+		res := models.NewResponse(false, nil, "not found")
+		return ctx.WriteData(res.MustMarshal())
+	}
+	res := models.NewResponse(true, user, "OK")
+	return ctx.WriteData(res.MustMarshal())
+
 }
 
 // GetAll get all user

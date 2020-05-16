@@ -978,3 +978,25 @@ INFO : 2020.05.10 00:58:43 -- record not found
 INFO : 2020.05.10 01:00:24 -- record not found
 INFO : 2020.05.10 01:06:01 -- record not found
 INFO : 2020.05.10 01:06:33 -- record not found
+INFO : 2020.05.10 23:25:54 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.10 23:25:56 -- db connected.
+INFO : 2020.05.16 21:01:20 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:01:20 -- db connected.
+INFO : 2020.05.16 21:02:43 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:02:43 -- db connected.
+INFO : 2020.05.16 21:07:11 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:07:12 -- db connected.
+INFO : 2020.05.16 21:07:41 -- pq: zero-length delimited identifier at or near """"
+INFO : 2020.05.16 21:08:02 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:08:03 -- db connected.
+INFO : 2020.05.16 21:08:47 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:08:47 -- db connected.
+INFO : 2020.05.16 21:15:33 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:15:34 -- db connected.
+INFO : 2020.05.16 21:16:22 -- pq: invalid input syntax for type integer: "profile"
+INFO : 2020.05.16 21:16:44 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:16:45 -- db connected.
+INFO : 2020.05.16 21:17:39 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:17:40 -- db connected.
+INFO : 2020.05.16 21:17:58 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.16 21:17:58 -- db connected.

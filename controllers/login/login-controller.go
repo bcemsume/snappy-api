@@ -28,14 +28,14 @@ func UserLogin(ctx *routing.Context) error {
 
 	db := ctx.Get("db").(*gorm.DB)
 
-	user := dbmodels.User{}
+	user := models.UserModel{}
 
 	if body.UserName == "" || body.Password == "" {
 		res := models.NewResponse(false, nil, "user not found")
 		return ctx.WriteData(res.MustMarshal())
 	}
 
-	if err := db.Where(&dbmodels.User{UserName: body.UserName, Password: body.Password}).First(&user).Error; err != nil {
+	if err := db.Model(&dbmodels.User{}).Where(&dbmodels.User{UserName: body.UserName, Password: body.Password}).Select("id").Scan(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "user not found")

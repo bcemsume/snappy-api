@@ -12,5 +12,5 @@ type ClaimEvent struct {
 	UserID   uint
 	User     User
 	IsUsed   bool
-	UsedTime time.Time
+	ScanDate time.Time
 }
