@@ -24,7 +24,7 @@ func InitDB() *gorm.DB {
 	}
 	log.TextInfo("db connected.")
 	db.AutoMigrate(&dbmodels.User{}, &dbmodels.Campaign{}, &dbmodels.ClaimEvent{},
-		&dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{}, &dbmodels.RestaurantUser{})
+		&dbmodels.Image{}, &dbmodels.Product{}, &dbmodels.Restaurant{}, &dbmodels.RestaurantUser{}, &dbmodels.Claim{})
 	addForeignKeys(db)
 	if appConf[config.DEBUGMODE] == "true" {
 		db = db.Debug()

@@ -10,6 +10,6 @@ type Claim struct {
 	*gorm.Model
 	CampaingID, UserID uint
 	IsUsed             bool
-	Claim              uint
+	Claim              int
 	UsedTime           time.Time
 }

@@ -2,8 +2,10 @@ package router
 
 import (
 	campaign "snappy-api/controllers/campaign"
+	claim "snappy-api/controllers/claim"
 	image "snappy-api/controllers/image"
 	login "snappy-api/controllers/login"
+
 	"snappy-api/models"
 
 	resUser "snappy-api/controllers/restaurant.user"
@@ -97,6 +99,10 @@ func Route() fasthttp.RequestHandler {
 	// restaurant-user
 	api.Get("restaurant-user", resUser.Get)
 	api.Post("restaurant-user/<id>", resUser.Create)
+
+	// claim
+	api.Post("claim", claim.AddClaim)
+	api.Get("claim/rewards", claim.GetRewards)
 
 	return router.HandleRequest
 }

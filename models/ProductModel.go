@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-// RestaurantModel s
+// ProductModel s
 type ProductModel struct {
 	RestaurantID, ID uint
 	Description      string
