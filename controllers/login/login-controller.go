@@ -24,7 +24,7 @@ func UserLogin(ctx *routing.Context) error {
 		logger.Error(r)
 		return r
 	}
-	expirationTime := time.Now().Add(9999 * time.Minute)
+	expirationTime := time.Now().Add(9999 * time.Hour)
 
 	db := ctx.Get("db").(*gorm.DB)
 
