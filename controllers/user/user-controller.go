@@ -1,11 +1,11 @@
 package controllers
 
 import (
+	sjwt "snappy-api/core/jwt"
 	"snappy-api/core/logger"
 	"snappy-api/models"
 	"snappy-api/models/dbmodels"
-
-	sjwt "snappy-api/core/jwt"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -44,28 +44,26 @@ func Update(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
 	userID := ctx.Param("id")
 
+	body := &models.UserProfileModel{}
 	user := &dbmodels.User{}
 
-	if r := jsoniter.Unmarshal(ctx.Request.Body(), &user); r != nil {
+	if r := jsoniter.Unmarshal(ctx.Request.Body(), &body); r != nil {
 		logger.Error(r)
 		return r
 	}
-
 	if err := db.Where("id = ?", userID).First(&user).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		r := models.NewResponse(false, nil, "user not found")
 		return ctx.WriteData(r.MustMarshal())
 	}
-
-	if err := jsoniter.Unmarshal(ctx.Request.Body(), &user); err != nil {
-		ctx.Response.SetStatusCode(400)
-		logger.Error(err)
-		r := models.NewResponse(false, nil, "unexpected error")
-
-		return ctx.WriteData(r.MustMarshal())
-
-	}
+	layout := "2006-01-02 15:04:05 -0700 MST"
+	t, _ := time.Parse(layout, body.BirthDay.String())
+	user.BirthDay = t
+	user.Name = body.Name
+	user.LastName = body.LastName
+	user.Email = body.Email
+	user.Gender = body.Gender
 
 	db.Save(&user)
 	r := models.NewResponse(true, user, "OK")

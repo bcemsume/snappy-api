@@ -1064,3 +1064,31 @@ INFO : 2020.05.18 14:55:34 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaw
 INFO : 2020.05.18 14:55:35 -- db connected.
 INFO : 2020.05.19 02:44:36 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
 INFO : 2020.05.19 02:44:37 -- db connected.
+INFO : 2020.05.19 21:12:43 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 21:12:45 -- db connected.
+INFO : 2020.05.19 21:13:54 -- dbmodels.User.BirthDay: unmarshalerDecoder: parsing time ""1991-11-13"" as ""2006-01-02T15:04:05Z07:00"": cannot parse """ as "T", error found in #10 byte of ...|991-11-13"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-13"}|...
+INFO : 2020.05.19 21:14:07 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 21:14:07 -- db connected.
+INFO : 2020.05.19 21:14:31 -- dbmodels.User.BirthDay: unmarshalerDecoder: parsing time "1991-11-13" as "2006/01/02 15:04:05": cannot parse "-11-13" as "/", error found in #10 byte of ...|991-11-13"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-13"}|...
+INFO : 2020.05.19 21:14:58 -- dbmodels.User.BirthDay: unmarshalerDecoder: parsing time "1991-11-13" as "2006/01/02 15:04:05": cannot parse "-11-13" as "/", error found in #10 byte of ...|991-11-13"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-13"}|...
+INFO : 2020.05.19 21:15:04 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 21:15:04 -- db connected.
+INFO : 2020.05.19 21:15:42 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 21:15:43 -- db connected.
+INFO : 2020.05.19 21:16:05 -- sql: Scan error on column index 10, name "birth_day": unsupported Scan, storing driver.Value type time.Time into type *dbmodels.SpecialDate
+INFO : 2020.05.19 21:16:27 -- sql: Scan error on column index 10, name "birth_day": unsupported Scan, storing driver.Value type time.Time into type *dbmodels.SpecialDate
+INFO : 2020.05.19 21:18:33 -- sql: Scan error on column index 10, name "birth_day": unsupported Scan, storing driver.Value type time.Time into type *dbmodels.SpecialDate
+INFO : 2020.05.19 21:19:02 -- sql: Scan error on column index 10, name "birth_day": unsupported Scan, storing driver.Value type time.Time into type *dbmodels.SpecialDate
+INFO : 2020.05.19 21:35:14 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 21:35:14 -- db connected.
+INFO : 2020.05.19 22:32:50 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 22:32:51 -- db connected.
+INFO : 2020.05.19 22:33:10 -- dbmodels.User.BirthDay: unmarshalerDecoder: parsing time ""1991-11-20"" as ""2006-01-02T15:04:05Z07:00"": cannot parse """ as "T", error found in #10 byte of ...|991-11-20"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-20"}|...
+INFO : 2020.05.19 22:33:28 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 22:33:28 -- db connected.
+INFO : 2020.05.19 22:33:47 -- models.UserProfileModel.BirthDay: unmarshalerDecoder: parsing time "1991-11-20" as "2006/01/02 15:04:05": cannot parse "-11-20" as "/", error found in #10 byte of ...|991-11-20"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-20"}|...
+INFO : 2020.05.19 22:34:08 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 22:34:09 -- db connected.
+INFO : 2020.05.19 22:34:33 -- models.UserProfileModel.BirthDay: unmarshalerDecoder: parsing time "1991-11-20" as "2006-01-02 15:04:05": cannot parse "" as "15", error found in #10 byte of ...|991-11-20"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-20"}|...
+INFO : 2020.05.19 22:34:49 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 22:34:49 -- db connected.
