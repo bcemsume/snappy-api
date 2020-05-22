@@ -1092,3 +1092,5 @@ INFO : 2020.05.19 22:34:09 -- db connected.
 INFO : 2020.05.19 22:34:33 -- models.UserProfileModel.BirthDay: unmarshalerDecoder: parsing time "1991-11-20" as "2006-01-02 15:04:05": cannot parse "" as "15", error found in #10 byte of ...|991-11-20"}|..., bigger context ...|":"test","password":"test","birthDay":"1991-11-20"}|...
 INFO : 2020.05.19 22:34:49 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
 INFO : 2020.05.19 22:34:49 -- db connected.
+INFO : 2020.05.19 22:51:25 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.19 22:51:26 -- db connected.

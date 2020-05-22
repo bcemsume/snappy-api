@@ -15,8 +15,7 @@ import (
 
 // Create s
 func Create(ctx *routing.Context) error {
-	item := &dbmodels.User{}
-
+	item := &models.UserCreateModel{}
 	db := ctx.Get("db").(*gorm.DB)
 
 	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
@@ -24,16 +23,45 @@ func Create(ctx *routing.Context) error {
 	}
 
 	findItem := &dbmodels.User{}
-	dbErr := db.Where(&dbmodels.User{UserName: item.UserName}).Or(&dbmodels.User{Email: item.Email}).First(&findItem).Error
+	dbErr := db.Where(&dbmodels.User{UserName: item.UserName}).Or(&dbmodels.User{PhoneNumber: item.PhoneNumber}).First(&findItem).Error
 
 	if dbErr != gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
-		r := models.NewResponse(false, nil, "this user name or email already exist.")
+		r := models.NewResponse(false, nil, "this user name or phone number exist.")
 
 		return ctx.WriteData(r.MustMarshal())
 	}
-	item.IsActive = true
+	findItem = &dbmodels.User{
+		IsActive:    true,
+		UserName:    item.UserName,
+		PhoneNumber: item.PhoneNumber,
+		Password:    item.Password,
+		DeviceID:    item.DeviceID,
+	}
+
 	db.Create(&item)
+	r := models.NewResponse(true, nil, "OK")
+	return ctx.WriteData(r.MustMarshal())
+}
+
+// UserCheckPhoneNumber s
+func UserCheckPhoneNumber(ctx *routing.Context) error {
+	item := &models.CheckUserPhoneNumberModel{}
+	db := ctx.Get("db").(*gorm.DB)
+
+	if jerr := jsoniter.Unmarshal(ctx.Request.Body(), &item); jerr != nil {
+		return jerr
+	}
+
+	findItem := &dbmodels.User{}
+	dbErr := db.Where(&dbmodels.User{PhoneNumber: item.PhoneNumber}).First(&findItem).Error
+
+	if dbErr != gorm.ErrRecordNotFound {
+		ctx.Response.SetStatusCode(400)
+		r := models.NewResponse(false, nil, "this user name or phone number exist.")
+
+		return ctx.WriteData(r.MustMarshal())
+	}
 	r := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
