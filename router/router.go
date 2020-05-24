@@ -42,8 +42,8 @@ func Route() fasthttp.RequestHandler {
 
 	router.Post("/token/user", login.UserLogin)
 	router.Post("/token/restaurant", login.RestaurantLogin)
-	router.Post("user", user.Create)
-	router.Post("user/check-phone-number", user.UserCheckPhoneNumber)
+	router.Post("/user", user.Create)
+	router.Post("/user/check-phone-number", user.UserCheckPhoneNumber)
 
 	api := router.Group("/api/")
 
