@@ -37,6 +37,7 @@ func Create(ctx *routing.Context) error {
 		PhoneNumber: item.PhoneNumber,
 		Password:    item.Password,
 		DeviceID:    item.DeviceID,
+		FCMToken:    item.FCMToken,
 	}
 
 	db.Create(&item)
