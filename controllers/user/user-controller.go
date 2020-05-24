@@ -40,7 +40,7 @@ func Create(ctx *routing.Context) error {
 		FCMToken:    item.FCMToken,
 	}
 
-	db.Create(&item)
+	db.Create(&findItem)
 	r := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
