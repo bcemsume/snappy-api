@@ -8,6 +8,7 @@ import (
 
 type Claim struct {
 	*gorm.Model
+	QRID               string
 	CampaingID, UserID uint
 	IsUsed             bool
 	Claim              int

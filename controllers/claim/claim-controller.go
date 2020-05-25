@@ -3,6 +3,7 @@ package controllers
 import (
 	"snappy-api/models"
 	"snappy-api/models/dbmodels"
+	"time"
 
 	routing "github.com/qiangxue/fasthttp-routing"
 
@@ -28,6 +29,13 @@ func AddClaim(ctx *routing.Context) error {
 	}
 
 	cmp := &dbmodels.Campaign{}
+
+	if e := db.Model(&dbmodels.Claim{QRID: body.QRID}).Error; e != gorm.ErrRecordNotFound {
+		ctx.Response.SetStatusCode(400)
+		r := models.NewResponse(true, nil, "QR Kod daha önceden kullanılmış.")
+
+		return ctx.WriteData(r.MustMarshal())
+	}
 
 	if e := db.Model(&dbmodels.Campaign{}).Where("id = ?", body.CampaignID).First(cmp).Error; e == gorm.ErrRecordNotFound {
 		ctx.Response.SetStatusCode(400)
@@ -64,9 +72,16 @@ func AddClaim(ctx *routing.Context) error {
 		r := models.NewResponse(true, nil, "OK")
 		return ctx.WriteData(r.MustMarshal())
 	}
-
+	c.QRID = body.QRID
 	c.Claim++
 	db.Save(c)
+	cl := &dbmodels.ClaimEvent{
+		CampaignID: c.CampaingID,
+		UserID:     c.UserID,
+		ScanDate:   time.Now(),
+	}
+
+	db.Save(cl)
 	r := models.NewResponse(true, nil, "OK")
 	return ctx.WriteData(r.MustMarshal())
 }
