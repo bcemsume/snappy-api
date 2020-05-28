@@ -141,6 +141,55 @@ func GetByID(ctx *routing.Context) error {
 	return ctx.WriteData(res.MustMarshal())
 }
 
+// GetByID asd
+func GetByIDUser(ctx *routing.Context) error {
+	logger := logger.GetLogInstance("", "")
+	db := ctx.Get("db").(*gorm.DB)
+
+	resID := ctx.Param("id")
+
+	rest := models.RestaurantModel{}
+
+	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", resID).Scan(&rest).Error; err != nil {
+		logger.Error(err)
+		ctx.Response.SetStatusCode(404)
+		res := models.NewResponse(false, nil, "not found")
+		return ctx.WriteData(res.MustMarshal())
+	}
+
+	logo := dbmodels.Image{}
+	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 2}).First(&logo).Error; err == nil {
+		rest.Logo = logo.ImageURL
+	}
+
+	imgs := []dbmodels.Image{}
+	if err := db.Where(&dbmodels.Image{RestaurantID: rest.ID, Type: 1}).Find(&imgs).Error; err == nil {
+
+		for _, elem := range imgs {
+			i := &models.Image{
+				ImageURL: elem.ImageURL,
+				Order:    elem.Order,
+				Type:     elem.Type,
+			}
+			rest.Images = append(rest.Images, *i)
+		}
+
+	}
+
+	cmp := []models.CampaingModel{}
+	if err := db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Where("products.restaurant_id = ?", resID).Scan(&cmp).Error; err == nil {
+		rest.Campaigns = cmp
+	}
+
+	prd := []models.ProductModel{}
+	if err := db.Model(&dbmodels.Product{}).Where("products.restaurant_id = ?", resID).Scan(&prd).Error; err == nil {
+		rest.Products = prd
+	}
+
+	res := models.NewResponse(true, rest, "OK")
+	return ctx.WriteData(res.MustMarshal())
+}
+
 // GetAll get all restaurant
 func GetAll(ctx *routing.Context) error {
 	db := ctx.Get("db").(*gorm.DB)
