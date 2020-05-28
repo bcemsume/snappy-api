@@ -1099,3 +1099,9 @@ INFO : 2020.05.23 21:22:19 -- db connected.
 INFO : 2020.05.23 21:24:18 -- pq: invalid input syntax for type integer: "check-phone-number"
 INFO : 2020.05.23 21:24:20 -- pq: invalid input syntax for type integer: "check-phone-number"
 INFO : 2020.05.23 21:24:22 -- pq: invalid input syntax for type integer: "check-phone-number"
+INFO : 2020.05.28 13:43:30 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.28 13:43:31 -- db connected.
+INFO : 2020.05.28 14:12:59 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.28 14:13:00 -- db connected.
+INFO : 2020.05.28 14:17:56 -- host=ec2-54-247-169-129.eu-west-1.compute.amazonaws.com user=pgjhfdbxkewwfv dbname=d7dscmh86o9rv1 sslmode=require password=428461b7eda48ee0f032292e9c7341e4072412f90f2bee98f1068e35b968bd4d
+INFO : 2020.05.28 14:17:57 -- db connected.

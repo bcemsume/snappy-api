@@ -6,6 +6,8 @@ import (
 	dbmodels "snappy-api/models/dbmodels"
 	"strconv"
 
+	sjwt "snappy-api/core/jwt"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	jsoniter "github.com/json-iterator/go"
@@ -92,9 +94,14 @@ func GetByID(ctx *routing.Context) error {
 	logger := logger.GetLogInstance("", "")
 	db := ctx.Get("db").(*gorm.DB)
 
+	tkn := string(ctx.Request.Header.Peek("Authorization"))
+	_, tokn := sjwt.ValidateJWT(tkn)
+
+	resID := tokn.(*sjwt.Claims).RestaurantID
+
 	rest := models.RestaurantModel{}
 
-	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", ctx.Param("id")).Scan(&rest).Error; err != nil {
+	if err := db.Model(&dbmodels.Restaurant{}).Where("id = ?", resID).Scan(&rest).Error; err != nil {
 		logger.Error(err)
 		ctx.Response.SetStatusCode(404)
 		res := models.NewResponse(false, nil, "not found")
@@ -121,8 +128,13 @@ func GetByID(ctx *routing.Context) error {
 	}
 
 	cmp := []models.CampaingModel{}
-	if err := db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Where("products.restaurant_id = ?", ctx.Param("id")).Scan(&cmp).Error; err == nil {
+	if err := db.Model(&dbmodels.Campaign{}).Select("campaigns.id, campaigns.claim,campaigns.product_id, campaigns.finish_date, products.description ").Joins("join products on campaigns.product_id = products.id").Where("products.restaurant_id = ?", resID).Scan(&cmp).Error; err == nil {
 		rest.Campaigns = cmp
+	}
+
+	prd := []models.ProductModel{}
+	if err := db.Model(&dbmodels.Product{}).Where("products.restaurant_id = ?", resID).Scan(&prd).Error; err == nil {
+		rest.Products = prd
 	}
 
 	res := models.NewResponse(true, rest, "OK")

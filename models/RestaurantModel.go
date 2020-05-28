@@ -7,4 +7,5 @@ type RestaurantModel struct {
 	IsActive, IsDeleted, IsPromo                                                              bool
 	Images                                                                                    []Image
 	Campaigns                                                                                 []CampaingModel
+	Products                                                                                  []ProductModel
 }
